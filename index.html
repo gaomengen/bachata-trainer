@@ -3,7 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Bachata Rhythm Trainer</title>
+
+<title>Bachata Rhythm Trainer — Derecho, Majao &amp; Mambo Ear Training</title>
+<meta name="description" content="Train your ear for the three bachata rhythms. Synthesized güira, bongó and bass grooves, a name-that-rhythm ear game, and a 4-week practice plan. Free, no signup, works offline.">
+<link rel="canonical" href="https://bachata-app-ashy.vercel.app/">
+
+<!-- Favicon: inline SVG so the app still makes zero network requests.
+     Every '#' is percent-encoded as %23 — a raw one truncates the data URI. -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230e0b14'/><rect x='11' y='38' width='6' height='14' rx='3' fill='%235eb1ff'/><rect x='23' y='31' width='6' height='21' rx='3' fill='%23ffb454'/><rect x='35' y='24' width='6' height='28' rx='3' fill='%23ff5d8f'/><rect x='47' y='16' width='6' height='36' rx='3' fill='%23b98cff'/></svg>">
+<link rel="apple-touch-icon" href="/icon.png">
+<meta name="theme-color" content="#0e0b14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bachata">
+
+<!-- Social preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bachata Rhythm Trainer">
+<meta property="og:title" content="Bachata Rhythm Trainer">
+<meta property="og:description" content="Train your ear for the three bachata rhythms — derecho, majao and mambo. Ear game, practice plan, and synthesized grooves.">
+<meta property="og:url" content="https://bachata-app-ashy.vercel.app/">
+<meta property="og:image" content="https://bachata-app-ashy.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bachata Rhythm Trainer — Derecho, Majao, Mambo — with four beat indicators, the fourth accented.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bachata Rhythm Trainer">
+<meta name="twitter:description" content="Train your ear for the three bachata rhythms — derecho, majao and mambo. Ear game, practice plan, and synthesized grooves.">
+<meta name="twitter:image" content="https://bachata-app-ashy.vercel.app/og.png">
 <style>
   :root{
     --bg:#0e0b14; --panel:#1a1524; --panel-2:#221a30; --line:#332a45;
@@ -210,7 +237,7 @@
   <section class="view" id="v-plan">
     <div class="card">
       <h2>4-Week Practice Plan</h2>
-      <p class="sub">Check off drills as you go. Your progress saves while this tab is open.</p>
+      <p class="sub">Check off drills as you go. Your progress is saved on this device.</p>
       <div class="prog"><i id="prog-bar"></i></div>
       <div style="text-align:right;font-size:.72rem;color:var(--faint)"><span id="prog-txt">0 / 0 done</span></div>
       <div id="weeks"></div>
@@ -271,6 +298,16 @@
 </nav>
 
 <script>
+/* ============ STORAGE ============
+   Progress lives in localStorage under a "brt:" prefix. Every access is wrapped —
+   Safari private mode throws on setItem, and a hand-edited value throws on parse.
+   Either way we fall back to defaults and the app behaves as it did before.      */
+const LS='brt:';
+function save(k,v){ try{ localStorage.setItem(LS+k, JSON.stringify(v)); }catch(_){} }
+// Returns the default unless the stored value parses to a real object — a missing key,
+// malformed JSON, or a stored 'null'/string/number all fall back rather than propagate.
+function load(k,d){ try{ const v=JSON.parse(localStorage.getItem(LS+k)); return (v && typeof v==='object') ? v : d; }catch(_){ return d; } }
+
 /* ============ AUDIO ENGINE ============ */
 let AC=null;
 function ctx(){ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
@@ -323,7 +360,15 @@ const PAT={
 };
 
 /* ============ SCHEDULER ============ */
-const state={ rhythm:'derecho', bpm:125, playing:false, inst:{guira:true,bongo:true,bass:true,count:false} };
+const DEF={ rhythm:'derecho', bpm:125, inst:{guira:true,bongo:true,bass:true,count:false} };
+const stored=load('trainer',{});
+const state={
+  rhythm: PAT[stored.rhythm] ? stored.rhythm : DEF.rhythm,   // reject a rhythm we can't play
+  bpm: Math.min(160, Math.max(90, +stored.bpm || DEF.bpm)),  // clamp to the slider's range
+  playing:false,                                             // never restored
+  inst: Object.assign({}, DEF.inst, stored.inst)
+};
+function saveTrainer(){ save('trainer',{rhythm:state.rhythm, bpm:state.bpm, inst:state.inst}); }
 let nextTime=0, slot=0, lookahead=null;
 const SLOTS=16;
 function slotDur(){ return (60/state.bpm)/4; }  // 16th note
@@ -360,19 +405,29 @@ function clearBeats(){ document.querySelectorAll('.beat').forEach(x=>x.classList
 /* ============ TRAINER UI ============ */
 document.querySelectorAll('#v-trainer .pill').forEach(p=>p.addEventListener('click',()=>{
   document.querySelectorAll('#v-trainer .pill').forEach(x=>x.classList.remove('sel'));
-  p.classList.add('sel'); state.rhythm=p.dataset.r;
+  p.classList.add('sel'); state.rhythm=p.dataset.r; saveTrainer();
 }));
 document.querySelectorAll('.tg').forEach(t=>t.addEventListener('click',()=>{
-  t.classList.toggle('on'); state.inst[t.dataset.inst]=t.classList.contains('on');
+  t.classList.toggle('on'); state.inst[t.dataset.inst]=t.classList.contains('on'); saveTrainer();
 }));
 const bpmEl=document.getElementById('bpm'), bpmv=document.getElementById('bpmv');
 bpmEl.addEventListener('input',()=>{ state.bpm=+bpmEl.value; bpmv.textContent=bpmEl.value; });
+// save on 'change' (fires on release), not 'input' — a drag fires ~70 times
+bpmEl.addEventListener('change',saveTrainer);
+
+// paint restored settings onto the controls
+function applyTrainerUI(){
+  document.querySelectorAll('#v-trainer .pill').forEach(p=>p.classList.toggle('sel', p.dataset.r===state.rhythm));
+  bpmEl.value=state.bpm; bpmv.textContent=state.bpm;
+  document.querySelectorAll('.tg').forEach(t=>t.classList.toggle('on', !!state.inst[t.dataset.inst]));
+}
+applyTrainerUI();
 const playBtn=document.getElementById('play');
 playBtn.addEventListener('click',()=>{ if(state.playing){ stopEngine(); playBtn.textContent='▶  Start'; playBtn.classList.remove('stop'); } else { startEngine(); playBtn.textContent='■  Stop'; playBtn.classList.add('stop'); } });
 
 /* ============ EAR GAME ============ */
 let gStop=null, gAnswer=null, gAnswered=false;
-const gScore={c:0,t:0,s:0};
+const gScore=Object.assign({c:0,t:0,s:0}, load('score',{}));  // merge guards a malformed value
 function gStopPlay(){ if(gStop){clearInterval(gStop);gStop=null;} }
 function gPlayRhythm(r){
   gStopPlay();
@@ -422,7 +477,8 @@ gBtns.forEach(b=>b.addEventListener('click',()=>{
   updateScore();
 }));
 document.getElementById('g-reset').addEventListener('click',()=>{ gScore.c=gScore.t=gScore.s=0; updateScore(); gFb.textContent=''; });
-function updateScore(){ document.getElementById('g-score').textContent=gScore.c; document.getElementById('g-total').textContent=gScore.t; document.getElementById('g-streak').textContent=gScore.s; }
+function updateScore(){ document.getElementById('g-score').textContent=gScore.c; document.getElementById('g-total').textContent=gScore.t; document.getElementById('g-streak').textContent=gScore.s; save('score',gScore); }
+updateScore();   // paint restored score on load — otherwise it only runs after an answer
 function cap(s){return s[0].toUpperCase()+s.slice(1);}
 
 /* ============ CURRICULUM ============ */
@@ -448,7 +504,7 @@ const PLAN=[
     'Check: does your mambo actually look different from your derecho?',
     'Dance socially and consciously match at least 3 rhythm changes']},
 ];
-const done={};
+const done=load('plan',{});
 function buildPlan(){
   const wEl=document.getElementById('weeks'); wEl.innerHTML='';
   PLAN.forEach((wk,wi)=>{
@@ -458,7 +514,7 @@ function buildPlan(){
       const id=wi+'-'+ti;
       const row=document.createElement('div'); row.className='task'+(done[id]?' done':'');
       row.innerHTML='<div class="cb'+(done[id]?' done':'')+'"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div><div class="tx">'+tx+'</div>';
-      row.addEventListener('click',()=>{ done[id]=!done[id]; buildPlan(); });
+      row.addEventListener('click',()=>{ done[id]=!done[id]; save('plan',done); buildPlan(); });
       d.appendChild(row);
     });
     wEl.appendChild(d);
