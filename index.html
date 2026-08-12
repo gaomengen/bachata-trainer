@@ -168,6 +168,33 @@
   .ref .try{margin-top:10px;background:transparent;border:1.5px solid var(--line);color:var(--txt);padding:8px 14px;border-radius:10px;font-weight:600;font-size:.78rem;cursor:pointer}
   .note{font-size:.74rem;color:var(--faint);text-align:center;line-height:1.5;margin:18px 0 4px}
   a{color:var(--derecho)}
+
+  /* music / spotify */
+  .steps{margin:0 0 14px;padding-left:20px;color:#ded7ec;font-size:.83rem;line-height:1.6}
+  .steps code{background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:2px 6px;font-size:.76rem;word-break:break-all}
+  input[type=text]{
+    width:100%;padding:13px;border-radius:12px;border:1.5px solid var(--line);
+    background:var(--panel-2);color:var(--txt);font-size:.92rem;font-family:inherit;
+  }
+  input[type=text]:focus{outline:none;border-color:var(--accent)}
+  .np{display:flex;align-items:center;gap:12px}
+  .np img{border-radius:8px;background:var(--panel-2);object-fit:cover;flex:none}
+  .np-t{min-width:0}
+  .np-t b{display:block;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .np-t span{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  #sp-tap{font-size:1.4rem;letter-spacing:3px;padding:22px}
+  #sp-tap:active{border-color:var(--accent);color:var(--accent)}
+  .res{
+    display:flex;align-items:center;gap:10px;padding:9px 0;cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,.04);
+  }
+  .res:last-child{border-bottom:none}
+  .res img{width:40px;height:40px;border-radius:6px;flex:none;background:var(--panel-2)}
+  .res .rt{min-width:0;flex:1}
+  .res .rt b{display:block;font-size:.84rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .res .rt span{font-size:.74rem;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  .res:active{opacity:.6}
+  .msg{font-size:.8rem;color:var(--muted);padding:12px 0;text-align:center}
 </style>
 </head>
 <body>
@@ -255,6 +282,80 @@
     </div>
   </section>
 
+  <!-- MUSIC (Spotify) -->
+  <section class="view" id="v-music">
+
+    <!-- shown until a Client ID exists -->
+    <div class="card" id="sp-setup" style="display:none">
+      <h2>Connect Spotify</h2>
+      <p class="sub">Practice against real bachata instead of synthesized grooves. One-time setup:</p>
+      <ol class="steps">
+        <li>Open <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noopener">developer.spotify.com/dashboard</a> and create an app.</li>
+        <li>Add this exact Redirect URI: <code id="sp-redirect"></code></li>
+        <li>Tick <b>Web Playback SDK</b> and <b>Web API</b>, then save.</li>
+        <li>Paste the app's Client ID below.</li>
+      </ol>
+      <input type="text" id="sp-cid" placeholder="Client ID" autocomplete="off" spellcheck="false">
+      <button class="btn" id="sp-save">Save Client ID</button>
+      <p class="note" style="text-align:left">Safe to paste here — PKCE uses no client secret. Stored only on this device.</p>
+    </div>
+
+    <!-- shown when we have a Client ID but no tokens -->
+    <div class="card" id="sp-login-card" style="display:none">
+      <h2>Connect Spotify</h2>
+      <p class="sub">Full-track playback needs <b>Spotify Premium</b>. You'll be sent to Spotify to approve, then back here.</p>
+      <button class="btn" id="sp-login">Connect Spotify</button>
+      <button class="btn ghost sm" id="sp-forget" style="margin-top:8px">Use a different Client ID</button>
+    </div>
+
+    <!-- shown when connected -->
+    <div class="card" id="sp-player" style="display:none">
+      <div class="np">
+        <img id="np-art" alt="" width="62" height="62">
+        <div class="np-t">
+          <b id="np-title">Nothing playing</b>
+          <span id="np-artist">Pick a track below</span>
+        </div>
+      </div>
+      <div class="btnrow" style="margin-top:14px">
+        <button class="btn ghost sm" id="sp-prev">⏮</button>
+        <button class="btn sm" id="sp-toggle">▶</button>
+        <button class="btn ghost sm" id="sp-next">⏭</button>
+      </div>
+
+      <h2 style="margin-top:22px">Tap the tempo</h2>
+      <p class="sub">Spotify no longer exposes BPM to new apps, so tap along with the song — 4 or more taps on the beat. The count-in below locks to whatever you tap.</p>
+      <button class="btn ghost" id="sp-tap">TAP</button>
+      <div class="row" style="margin-top:12px">
+        <span class="bpmval" style="min-width:auto;white-space:nowrap"><span id="sp-bpm">—</span> bpm</span>
+        <button class="btn ghost sm" id="sp-useb" style="margin:0" disabled>Send to Trainer</button>
+      </div>
+
+      <div class="beats" id="m-beats"></div>
+      <div class="toggles">
+        <div class="tg" data-mclick="1">Count-in click</div>
+      </div>
+      <p class="note" style="text-align:left">Dance your basic to the real song. Beat 4 is still your accent.</p>
+    </div>
+
+    <!-- search + playlists -->
+    <div class="card" id="sp-browse" style="display:none">
+      <h2>Find bachata</h2>
+      <input type="text" id="sp-q" placeholder="Search tracks or artists…" autocomplete="off">
+      <div class="btnrow" style="margin-top:8px">
+        <button class="btn sm" id="sp-search">Search</button>
+        <button class="btn ghost sm" id="sp-lists">My playlists</button>
+      </div>
+      <div id="sp-results"></div>
+    </div>
+
+    <div class="card" id="sp-err" style="display:none">
+      <h2>Spotify problem</h2>
+      <p class="sub" id="sp-errtxt"></p>
+      <button class="btn ghost sm" id="sp-retry">Disconnect and try again</button>
+    </div>
+  </section>
+
   <!-- REFERENCE -->
   <section class="view" id="v-ref">
     <div class="card">
@@ -294,6 +395,7 @@
   <button class="tab active" data-v="trainer"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Trainer</button>
   <button class="tab" data-v="game"><svg viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M4 13v3a2 2 0 0 0 2 2h1M20 13v3a2 2 0 0 1-2 2h-1"/></svg>Ear Game</button>
   <button class="tab" data-v="plan"><svg viewBox="0 0 24 24"><path d="M9 5h9M9 12h9M9 19h9"/><path d="M4 5l1 1 1.5-2M4 12l1 1 1.5-2M4 19l1 1 1.5-2"/></svg>Plan</button>
+  <button class="tab" data-v="music"><svg viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>Music</button>
   <button class="tab" data-v="ref"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h8v16H6a2 2 0 0 0-2 2z"/><path d="M14 3h4v16h-4"/></svg>Rhythms</button>
 </nav>
 
@@ -550,14 +652,281 @@ document.querySelectorAll('.try').forEach(b=>b.addEventListener('click',()=>{
   refStop=setInterval(()=>{ const now=c.currentTime; while(nt<now+0.12){ const p=PAT[r]; if(p.guira(s))guira(nt,r==='mambo'?0.22:0.32); const bg=p.bongo(s); if(bg)bongo(nt,bg[0]==='hi'?440:250,bg[1]); if(p.bass(s))bass(nt); nt+=dur; s=(s+1)%16;} },25);
 }));
 
+/* ============ SPOTIFY ============
+   Authorization Code + PKCE — no client secret, so the Client ID is safe in the page.
+   Everything here is inert until a Client ID exists: no script is fetched, no request
+   is made, and the other four tabs keep working offline exactly as before.           */
+const SP_CLIENT_ID = '';                                  // optional: hardcode instead of pasting in-app
+const SP_REDIRECT  = location.origin + location.pathname; // must be registered verbatim
+const SP_SCOPES = 'streaming user-read-email user-read-private ' +
+                  'user-read-playback-state user-modify-playback-state playlist-read-private';
+
+const b64url = buf => btoa(String.fromCharCode(...new Uint8Array(buf)))
+  .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const sha256 = s => crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+// PKCE unreserved charset (RFC 7636): ALPHA / DIGIT / "-" / "." / "_" / "~"
+const SP_CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+const spRand = n => [...crypto.getRandomValues(new Uint8Array(n))].map(x=>SP_CHARS[x%SP_CHARS.length]).join('');
+
+let spTok = load('sp_tok',{});
+let spPlayer=null, SP_DEVICE=null, spSdkStarted=false;
+const spClientId = () => SP_CLIENT_ID || load('sp_cid',{}).v || '';
+
+/* ---- auth ---- */
+async function spLogin(){
+  const cid=spClientId(); if(!cid) return;
+  if(!window.isSecureContext || !window.crypto || !crypto.subtle){
+    return spError('Spotify login needs a secure context. Serve this over https, or http://127.0.0.1 locally — plain localhost and file:// will not work.');
+  }
+  const verifier=spRand(96);
+  save('sp_ver',{v:verifier});
+  const p=new URLSearchParams({ client_id:cid, response_type:'code', redirect_uri:SP_REDIRECT,
+    scope:SP_SCOPES, code_challenge_method:'S256', code_challenge:b64url(await sha256(verifier)) });
+  location.href='https://accounts.spotify.com/authorize?'+p;
+}
+function spStore(j){
+  spTok={ access_token:j.access_token,
+          refresh_token:j.refresh_token || spTok.refresh_token,   // refresh responses may omit it
+          expires_at: Date.now() + (j.expires_in||3600)*1000 };
+  save('sp_tok',spTok); return spTok;
+}
+async function spForm(body){
+  const r=await fetch('https://accounts.spotify.com/api/token',
+    {method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});
+  if(!r.ok) throw new Error('token request failed ('+r.status+')');
+  return r.json();
+}
+async function spExchange(code){
+  return spStore(await spForm(new URLSearchParams({ client_id:spClientId(), grant_type:'authorization_code',
+    code, redirect_uri:SP_REDIRECT, code_verifier: load('sp_ver',{}).v || '' })));
+}
+async function spRefresh(){
+  if(!spTok.refresh_token) throw new Error('no refresh token');
+  try{
+    return spStore(await spForm(new URLSearchParams({ client_id:spClientId(),
+      grant_type:'refresh_token', refresh_token:spTok.refresh_token })));
+  }catch(e){ spDisconnect(); throw e; }
+}
+async function spToken(){
+  if(!spTok.access_token) throw new Error('not connected');
+  if(Date.now() > spTok.expires_at - 15000) await spRefresh();   // refresh ~15s early
+  return spTok.access_token;
+}
+function spDisconnect(){
+  spTok={}; save('sp_tok',{});
+  if(spPlayer){ try{ spPlayer.disconnect(); }catch(_){} }
+  SP_DEVICE=null; spRoute();
+}
+
+/* ---- web api ---- */
+async function spApi(path, opts={}){
+  const t=await spToken();
+  const r=await fetch('https://api.spotify.com/v1'+path,
+    {...opts, headers:{Authorization:'Bearer '+t,'Content-Type':'application/json',...(opts.headers||{})}});
+  if(r.status===204 || r.status===202) return null;
+  if(!r.ok){
+    if(r.status===401){ spDisconnect(); throw new Error('Session expired — connect again.'); }
+    if(r.status===403) throw new Error('Spotify refused that (Premium required, or this account is not on the app\'s allowlist).');
+    if(r.status===429) throw new Error('Rate limited by Spotify. Wait a moment.');
+    throw new Error('Spotify API error '+r.status);
+  }
+  return r.json();
+}
+async function spPlay(payload){
+  if(!SP_DEVICE) return spError('The player is still starting up — try again in a second.');
+  try{ await spApi('/me/player/play?device_id='+SP_DEVICE,{method:'PUT',body:JSON.stringify(payload)}); }
+  catch(e){ spError(e.message); }
+}
+
+/* ---- web playback sdk ---- */
+function spInitPlayer(){
+  if(spSdkStarted) return; spSdkStarted=true;
+  window.onSpotifyWebPlaybackSDKReady=()=>{
+    spPlayer=new Spotify.Player({
+      name:'Bachata Rhythm Trainer',
+      getOAuthToken: cb => spToken().then(cb).catch(()=>{}),   // SDK pulls a fresh token on demand
+      volume:0.85
+    });
+    spPlayer.addListener('ready',({device_id})=>{ SP_DEVICE=device_id; });
+    spPlayer.addListener('not_ready',()=>{ SP_DEVICE=null; });
+    spPlayer.addListener('player_state_changed', spRenderNP);
+    spPlayer.addListener('account_error',()=>spError('Full-track playback needs Spotify Premium.'));
+    spPlayer.addListener('authentication_error',()=>spError('Spotify rejected the session. Disconnect and connect again.'));
+    spPlayer.addListener('initialization_error',e=>spError('Player failed to start: '+((e&&e.message)||'unknown')));
+    spPlayer.connect();
+  };
+  const s=document.createElement('script');
+  s.src='https://sdk.scdn.co/spotify-player.js';
+  s.onerror=()=>spError('Could not load the Spotify player script — offline, or blocked by an extension.');
+  document.body.appendChild(s);
+}
+function spRenderNP(st){
+  if(!st) return;
+  const tr=st.track_window && st.track_window.current_track;
+  if(tr){
+    document.getElementById('np-title').textContent=tr.name;
+    document.getElementById('np-artist').textContent=tr.artists.map(a=>a.name).join(', ');
+    const art=document.getElementById('np-art'), img=(tr.album.images||[])[0];
+    if(img){ art.src=img.url; art.style.visibility='visible'; } else { art.removeAttribute('src'); art.style.visibility='hidden'; }
+  }
+  document.getElementById('sp-toggle').textContent = st.paused ? '▶' : '⏸';
+}
+
+/* ---- search / playlists ---- */
+function spRenderResults(items){
+  const box=document.getElementById('sp-results'); box.innerHTML='';
+  if(!items.length){ box.innerHTML='<div class="msg">Nothing found.</div>'; return; }
+  items.forEach(it=>{
+    const row=document.createElement('div'); row.className='res';
+    const im=document.createElement('img'); im.alt='';
+    if(it.img) im.src=it.img;                       // set as a property, never spliced into HTML
+    const rt=document.createElement('div'); rt.className='rt';
+    const b=document.createElement('b'); b.textContent=it.title;      // track/artist names are
+    const sp=document.createElement('span'); sp.textContent=it.sub;   // untrusted — textContent only
+    rt.append(b,sp); row.append(im,rt);
+    row.addEventListener('click',()=>spPlay(it.payload));
+    box.appendChild(row);
+  });
+}
+const spThumb = imgs => ((imgs||[]).slice(-1)[0]||{}).url;
+async function spDoSearch(){
+  const q=document.getElementById('sp-q').value.trim(); if(!q) return;
+  document.getElementById('sp-results').innerHTML='<div class="msg">Searching…</div>';
+  try{
+    const j=await spApi('/search?type=track&limit=12&q='+encodeURIComponent(q));
+    spRenderResults((j.tracks.items||[]).map(t=>({ img:spThumb(t.album.images), title:t.name,
+      sub:t.artists.map(a=>a.name).join(', '), payload:{uris:[t.uri]} })));
+  }catch(e){ document.getElementById('sp-results').innerHTML=''; spError(e.message); }
+}
+async function spDoPlaylists(){
+  document.getElementById('sp-results').innerHTML='<div class="msg">Loading…</div>';
+  try{
+    const j=await spApi('/me/playlists?limit=50');
+    spRenderResults((j.items||[]).map(p=>({ img:spThumb(p.images), title:p.name,
+      sub:((p.tracks&&p.tracks.total)||0)+' tracks', payload:{context_uri:p.uri} })));
+  }catch(e){ document.getElementById('sp-results').innerHTML=''; spError(e.message); }
+}
+
+/* ---- tap tempo (no Spotify: audio-features is closed to new apps) ---- */
+let spTaps=[], spBpm=null;
+function spTap(){
+  const now=performance.now();
+  spTaps=[...spTaps, now].filter(t => now-t < 3000);      // only the last ~3s of taps
+  if(spTaps.length<2) return;
+  const gaps=spTaps.slice(1).map((t,i)=>t-spTaps[i]);
+  let bpm=60000/(gaps.reduce((a,b)=>a+b,0)/gaps.length);
+  while(bpm>160) bpm/=2; while(bpm<90) bpm*=2;
+  // 90–160 is narrower than an octave, so folding alone can overshoot — clamp to be sure
+  spBpm=Math.max(90, Math.min(160, Math.round(bpm)));
+  document.getElementById('sp-bpm').textContent=spBpm;
+  document.getElementById('sp-useb').disabled=false;
+  if(mOn){ mStop(); mStart(); }                            // relock the click to the new tempo
+}
+
+/* ---- count-in click for the Music tab (own scheduler; the Trainer's stops on tab change) ---- */
+let mOn=false, mInt=null, mNext=0, mBeat=0;
+const mBeatsEl=document.getElementById('m-beats');
+const mTg=()=>document.querySelector('.tg[data-mclick]');
+(function mBuild(){ for(let i=0;i<4;i++){ const d=document.createElement('div');
+  d.className='beat'+(i===3?' tap':''); d.textContent=i+1; mBeatsEl.appendChild(d);} })();
+function mFlash(beat,at,now){
+  setTimeout(()=>{ if(!mOn)return;
+    [...mBeatsEl.children].forEach(x=>x.classList.remove('on'));
+    const el=mBeatsEl.children[beat];
+    if(el){ el.classList.add('on'); setTimeout(()=>el.classList.remove('on'),150); }
+  }, Math.max(0,(at-now)*1000));
+}
+function mStart(){
+  if(mOn || !spBpm) return;
+  mOn=true; mTg() && mTg().classList.add('on');
+  const c=ctx(); mNext=c.currentTime+0.1; mBeat=0;
+  mInt=setInterval(()=>{
+    const c=ctx(), dur=60/spBpm;
+    while(mNext < c.currentTime+0.12){
+      click(mNext, mBeat===3);                             // beat 4 gets the high click
+      mFlash(mBeat, mNext, c.currentTime);
+      mNext+=dur; mBeat=(mBeat+1)%4;
+    }
+  },25);
+}
+function mStop(){
+  mOn=false; if(mInt){ clearInterval(mInt); mInt=null; }
+  [...mBeatsEl.children].forEach(x=>x.classList.remove('on'));
+  mTg() && mTg().classList.remove('on');
+}
+
+/* ---- view routing + wiring ---- */
+function spShow(s){
+  document.getElementById('sp-setup').style.display      = s==='setup'    ?'':'none';
+  document.getElementById('sp-login-card').style.display = s==='login'    ?'':'none';
+  document.getElementById('sp-player').style.display     = s==='connected'?'':'none';
+  document.getElementById('sp-browse').style.display     = s==='connected'?'':'none';
+}
+function spError(msg){
+  document.getElementById('sp-errtxt').textContent=msg;
+  document.getElementById('sp-err').style.display='';
+}
+function spRoute(){
+  document.getElementById('sp-err').style.display='none';
+  if(!spClientId())        return spShow('setup');
+  if(!spTok.access_token)  return spShow('login');
+  spShow('connected'); spInitPlayer();
+}
+document.getElementById('sp-redirect').textContent=SP_REDIRECT;
+document.getElementById('sp-save').addEventListener('click',()=>{
+  const v=document.getElementById('sp-cid').value.trim();
+  if(!v) return;
+  save('sp_cid',{v}); spRoute();
+});
+document.getElementById('sp-login').addEventListener('click',()=>spLogin());
+document.getElementById('sp-forget').addEventListener('click',()=>{ save('sp_cid',{v:''}); spRoute(); });
+document.getElementById('sp-retry').addEventListener('click',()=>spDisconnect());
+document.getElementById('sp-toggle').addEventListener('click',()=>spPlayer&&spPlayer.togglePlay());
+document.getElementById('sp-next').addEventListener('click',()=>spPlayer&&spPlayer.nextTrack());
+document.getElementById('sp-prev').addEventListener('click',()=>spPlayer&&spPlayer.previousTrack());
+document.getElementById('sp-tap').addEventListener('click',spTap);
+document.getElementById('sp-search').addEventListener('click',spDoSearch);
+document.getElementById('sp-lists').addEventListener('click',spDoPlaylists);
+document.getElementById('sp-q').addEventListener('keydown',e=>{ if(e.key==='Enter') spDoSearch(); });
+document.getElementById('sp-useb').addEventListener('click',()=>{
+  if(!spBpm) return;
+  state.bpm=spBpm; bpmEl.value=spBpm; bpmv.textContent=spBpm; saveTrainer();
+  const b=document.getElementById('sp-useb'); b.textContent='Sent ✓';
+  setTimeout(()=>{ b.textContent='Send to Trainer'; },1200);
+});
+document.querySelector('.tg[data-mclick]').addEventListener('click',()=>{
+  if(mOn) return mStop();
+  if(!spBpm) return spError('Tap the tempo first so the click knows how fast to count.');
+  mStart();
+});
+
+(async function spInit(){
+  const qs=new URLSearchParams(location.search);
+  if(qs.get('error')){
+    history.replaceState({},'',SP_REDIRECT);
+    spRoute(); spError('Spotify login was denied or cancelled.');
+    return;
+  }
+  if(qs.get('code')){
+    const code=qs.get('code');
+    history.replaceState({},'',SP_REDIRECT);   // clear before exchanging — an auth code is single-use
+    try{ await spExchange(code); }
+    catch(e){ spRoute(); return spError('Could not finish the login. Connect again.'); }
+  }
+  spRoute();
+})();
+
 /* ============ TABS ============ */
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
   document.getElementById('v-'+t.dataset.v).classList.add('active');
-  // silence whatever the tab we just left was playing
+  // silence whatever the tab we just left was playing.
+  // Spotify playback is deliberately left running — it's the user's music, with its own
+  // transport; only sounds this app generates get stopped.
   if(t.dataset.v!=='trainer'){ stopTrainer(); }
+  if(t.dataset.v!=='music'){ mStop(); }
   if(t.dataset.v!=='game'){ gStopPlay(); if(gPlayBtn.textContent.includes('Stop')) gPlayBtn.textContent='▶  Play a rhythm'; }
   if(t.dataset.v!=='ref' && refStop){ clearInterval(refStop); refStop=null; document.querySelectorAll('.try').forEach(x=>{x.textContent='▶ Hear '+x.dataset.try;x.dataset._on='';}); }
 }));
