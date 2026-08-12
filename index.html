@@ -356,6 +356,19 @@
       <p class="note" style="text-align:left">Dance your basic to the real song. Beat 4 is still your accent.</p>
     </div>
 
+    <!-- one-tap practice picks -->
+    <div class="card" id="sp-picks" style="display:none">
+      <h2>Practice picks</h2>
+      <p class="sub">Tap one and dance — no searching mid-session. Ordered easiest first.</p>
+      <div id="sp-picklist"></div>
+      <p class="sub" style="margin:16px 0 8px">Or put on a whole playlist and keep going:</p>
+      <div class="btnrow">
+        <button class="btn ghost sm" data-plq="bachata">Bachata mix</button>
+        <button class="btn ghost sm" data-plq="bachata clasica">Clásica</button>
+        <button class="btn ghost sm" data-plq="bachata sensual">Sensual</button>
+      </div>
+    </div>
+
     <!-- search + playlists -->
     <div class="card" id="sp-browse" style="display:none">
       <h2>Find bachata</h2>
@@ -933,6 +946,59 @@ function spRenderResults(items){
   });
 }
 const spThumb = imgs => ((imgs||[]).slice(-1)[0]||{}).url;
+
+/* ---- one-tap practice picks ----
+   Stored as search queries, not track IDs: IDs differ by region and get re-issued when
+   a label re-uploads a track, and a stale ID is a dead button. Resolving at tap time
+   costs one extra request and always lands on something playable.                     */
+const SP_PICKS=[
+  {t:'Obsesión',            a:'Aventura',          why:'Textbook derecho → majao shifts. Start here.'},
+  {t:'Darte un Beso',       a:'Prince Royce',      why:'Steady and clean — good for drilling the basic.'},
+  {t:'Hoja en Blanco',      a:'Monchy & Alexandra',why:'Classic mid-tempo, very clear güira.'},
+  {t:'Propuesta Indecente', a:'Romeo Santos',      why:'Big obvious section changes to match.'},
+  {t:'Princesa',            a:'Frank Reyes',       why:'Traditional Dominican feel, strong bongó.'},
+  {t:'El Amor',             a:'Zacarías Ferreira', why:'Slow and steady — practice staying grounded.'},
+  {t:'Bachata en Fukuoka',  a:'Juan Luis Guerra',  why:'Bright and playful, lots of mambo energy.'},
+  {t:'Voy Pa\' Lla',        a:'Antony Santos',     why:'Old-school and fast. Save this for last.'}
+];
+function spBuildPicks(){
+  const box=document.getElementById('sp-picklist'); box.innerHTML='';
+  SP_PICKS.forEach(p=>{
+    const row=document.createElement('div'); row.className='res';
+    const rt=document.createElement('div'); rt.className='rt';
+    const b=document.createElement('b'); b.textContent=p.t+' · '+p.a;
+    const s=document.createElement('span'); s.textContent=p.why;
+    rt.append(b,s); row.append(rt);
+    row.addEventListener('click',()=>spPlayPick(p));
+    box.appendChild(row);
+  });
+}
+spBuildPicks();
+async function spPlayPick(p){
+  try{
+    // field-scoped query first; fall back to a loose one if the catalog names it differently
+    let j=await spApi('/search?type=track&limit=1&market=from_token&q='+
+      encodeURIComponent('track:"'+p.t+'" artist:"'+p.a+'"'));
+    let item=((j.tracks||{}).items||[])[0];
+    if(!item){
+      j=await spApi('/search?type=track&limit=1&market=from_token&q='+encodeURIComponent(p.t+' '+p.a));
+      item=((j.tracks||{}).items||[])[0];
+    }
+    if(!item) return spError('Couldn\'t find "'+p.t+'" by '+p.a+' on Spotify here. Try the search box.');
+    spPlay({uris:[item.uri]});
+  }catch(e){ spError(e.message); }
+}
+async function spPlaylistSearch(q){
+  document.getElementById('sp-results').innerHTML='<div class="msg">Loading…</div>';
+  try{
+    const j=await spApi('/search?type=playlist&limit=12&q='+encodeURIComponent(q));
+    // Spotify's playlist search returns null entries in items — filter before mapping
+    const items=(((j.playlists||{}).items)||[]).filter(Boolean);
+    spRenderResults(items.map(p=>({ img:spThumb(p.images), title:p.name,
+      sub:((p.owner||{}).display_name)||'playlist', payload:{context_uri:p.uri} })));
+    document.getElementById('sp-browse').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }catch(e){ document.getElementById('sp-results').innerHTML=''; spError(e.message); }
+}
 async function spDoSearch(){
   const q=document.getElementById('sp-q').value.trim(); if(!q) return;
   document.getElementById('sp-results').innerHTML='<div class="msg">Searching…</div>';
@@ -1004,6 +1070,7 @@ function spShow(s){
   document.getElementById('sp-setup').style.display      = s==='setup'    ?'':'none';
   document.getElementById('sp-login-card').style.display = s==='login'    ?'':'none';
   document.getElementById('sp-player').style.display     = s==='connected'?'':'none';
+  document.getElementById('sp-picks').style.display      = s==='connected'?'':'none';
   document.getElementById('sp-browse').style.display     = s==='connected'?'':'none';
 }
 function spError(msg){
@@ -1032,6 +1099,8 @@ document.getElementById('sp-toggle').addEventListener('click',()=>spTransport('t
 document.getElementById('sp-next').addEventListener('click',()=>spTransport('next'));
 document.getElementById('sp-prev').addEventListener('click',()=>spTransport('previous'));
 document.getElementById('sp-devrefresh').addEventListener('click',()=>spLoadDevices());
+document.querySelectorAll('[data-plq]').forEach(b =>
+  b.addEventListener('click',()=>spPlaylistSearch(b.dataset.plq)));
 document.getElementById('sp-tap').addEventListener('click',spTap);
 document.getElementById('sp-search').addEventListener('click',spDoSearch);
 document.getElementById('sp-lists').addEventListener('click',spDoPlaylists);
