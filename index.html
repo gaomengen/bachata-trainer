@@ -423,7 +423,9 @@ function applyTrainerUI(){
 }
 applyTrainerUI();
 const playBtn=document.getElementById('play');
-playBtn.addEventListener('click',()=>{ if(state.playing){ stopEngine(); playBtn.textContent='▶  Start'; playBtn.classList.remove('stop'); } else { startEngine(); playBtn.textContent='■  Stop'; playBtn.classList.add('stop'); } });
+// stops the engine AND resets the button — safe to call when already stopped
+function stopTrainer(){ if(!state.playing)return; stopEngine(); playBtn.textContent='▶  Start'; playBtn.classList.remove('stop'); }
+playBtn.addEventListener('click',()=>{ if(state.playing){ stopTrainer(); } else { startEngine(); playBtn.textContent='■  Stop'; playBtn.classList.add('stop'); } });
 
 /* ============ EAR GAME ============ */
 let gStop=null, gAnswer=null, gAnswered=false;
@@ -554,8 +556,9 @@ document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
   document.getElementById('v-'+t.dataset.v).classList.add('active');
-  // stop game/ref audio when leaving
-  if(t.dataset.v!=='game'){ gStopPlay(); }
+  // silence whatever the tab we just left was playing
+  if(t.dataset.v!=='trainer'){ stopTrainer(); }
+  if(t.dataset.v!=='game'){ gStopPlay(); if(gPlayBtn.textContent.includes('Stop')) gPlayBtn.textContent='▶  Play a rhythm'; }
   if(t.dataset.v!=='ref' && refStop){ clearInterval(refStop); refStop=null; document.querySelectorAll('.try').forEach(x=>{x.textContent='▶ Hear '+x.dataset.try;x.dataset._on='';}); }
 }));
 tShow();
