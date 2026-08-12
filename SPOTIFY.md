@@ -96,10 +96,57 @@ function initPlayer(){
 }
 ```
 
+## 3b. Spotify Connect — the mobile path (what this app actually uses)
+
+**The Web Playback SDK does not run in mobile browsers.** Not a bug to work around — it's
+unsupported by design, so on a phone the browser can never be the player. Connect solves it
+by driving a Spotify app that's already running somewhere (the phone, a desktop, a speaker).
+
+List devices, then target one by `device_id` on every call:
+
+```js
+const { devices } = await api('/me/player/devices');
+// each: { id, name, type, is_active, is_restricted }
+```
+
+Transfer playback to a device:
+
+```js
+await api('/me/player', { method:'PUT', body: JSON.stringify({ device_ids:[id], play:false }) });
+```
+
+There are no SDK events for a remote device, so poll for now-playing:
+
+```js
+const st = await api('/me/player');   // 204 when nothing is active
+// st.is_playing, st.item.name, st.item.artists, st.device.id
+```
+
+Gotchas:
+
+- A device only appears **while the Spotify app is open** (play something for a second first).
+- Connect control also requires **Premium**; a free account gets 403.
+- `is_restricted: true` means that device won't accept remote commands.
+- Poll on a timer only while the relevant view is visible — otherwise it burns battery and
+  eats into the rate limit. `429` means back off.
+
+The SDK and Connect compose: on desktop, initializing the SDK simply adds the browser as one
+more device in the same list.
+
 ## 4. Playback control
 
-Transport (play/pause/skip) is on the SDK object: `player.togglePlay()`,
-`player.nextTrack()`, `player.previousTrack()`.
+With the SDK, transport is on the player object: `player.togglePlay()`, `player.nextTrack()`,
+`player.previousTrack()`. That only works for the SDK's own device.
+
+For Connect — and for uniform behavior across platforms — use the Web API instead, targeting
+`device_id`:
+
+```
+PUT  /me/player/play?device_id=<id>
+PUT  /me/player/pause?device_id=<id>
+POST /me/player/next?device_id=<id>
+POST /me/player/previous?device_id=<id>
+```
 
 To start specific music you POST to the Web API targeting your device — `{uris:[...]}` for
 tracks or `{context_uri}` for a playlist/album:

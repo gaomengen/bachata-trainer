@@ -194,7 +194,15 @@
   .res .rt b{display:block;font-size:.84rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .res .rt span{font-size:.74rem;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
   .res:active{opacity:.6}
-  .msg{font-size:.8rem;color:var(--muted);padding:12px 0;text-align:center}
+  .msg{font-size:.8rem;color:var(--muted);padding:12px 0;text-align:center;line-height:1.5}
+  .dev{
+    padding:10px 12px;margin:6px 0;border-radius:11px;cursor:pointer;
+    border:1.5px solid var(--line);background:var(--panel-2);
+  }
+  .dev b{display:block;font-size:.86rem;font-weight:600}
+  .dev span{font-size:.72rem;color:var(--faint);text-transform:capitalize}
+  .dev.sel{border-color:var(--accent)}
+  .dev.sel b{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -314,7 +322,13 @@
 
     <!-- shown when connected -->
     <div class="card" id="sp-player" style="display:none">
-      <div class="np">
+      <div class="row" style="margin:0 0 8px">
+        <label style="min-width:auto;flex:1">Playing on</label>
+        <button class="btn ghost sm" id="sp-devrefresh" style="margin:0;width:auto;padding:7px 12px">Refresh</button>
+      </div>
+      <div id="sp-devices"></div>
+
+      <div class="np" style="margin-top:16px">
         <img id="np-art" alt="" width="62" height="62">
         <div class="np-t">
           <b id="np-title">Nothing playing</b>
@@ -781,44 +795,125 @@ async function spApi(path, opts={}){
   }
   return r.json();
 }
-async function spPlay(payload){
-  if(!SP_DEVICE) return spError('The player is still starting up — try again in a second.');
-  try{ await spApi('/me/player/play?device_id='+SP_DEVICE,{method:'PUT',body:JSON.stringify(payload)}); }
-  catch(e){ spError(e.message); }
+/* ---- Spotify Connect: pick a device, drive it over the Web API ----
+   The Web Playback SDK only runs in desktop browsers, so on a phone the browser can
+   never be the player. Connect sidesteps that: control the Spotify app already running
+   on the phone (or a desktop, or a speaker). Everything below works on every platform;
+   the SDK further down just adds this browser as one more device when it can.        */
+let spDevices=[], spDevId=load('sp_dev',{}).v||null, spPaused=true, spPollInt=null;
+
+function spDevQ(){ return spDevId ? '?device_id='+encodeURIComponent(spDevId) : ''; }
+
+async function spLoadDevices(){
+  const box=document.getElementById('sp-devices');
+  box.innerHTML='<div class="msg">Looking for devices…</div>';
+  try{
+    const j=await spApi('/me/player/devices');
+    spDevices=(j&&j.devices)||[];
+    if(!spDevices.length){
+      box.innerHTML='<div class="msg">No devices found.<br>Open Spotify on your phone and play anything for a second — that makes it visible — then tap Refresh.</div>';
+      return;
+    }
+    // keep the stored pick if it's still around, else follow whatever is active
+    if(!spDevId || !spDevices.some(d=>d.id===spDevId)){
+      const act=spDevices.find(d=>d.is_active)||spDevices[0];
+      spDevId=act.id; save('sp_dev',{v:spDevId});
+    }
+    box.innerHTML='';
+    spDevices.forEach(d=>{
+      const row=document.createElement('div');
+      row.className='dev'+(d.id===spDevId?' sel':'');
+      const n=document.createElement('b'); n.textContent=d.name;        // device names are user data
+      const s=document.createElement('span');
+      s.textContent=d.type+(d.is_active?' · active':'')+(d.is_restricted?' · restricted':'');
+      row.append(n,s);
+      row.addEventListener('click',()=>spPickDevice(d.id));
+      box.appendChild(row);
+    });
+  }catch(e){ box.innerHTML=''; spError(e.message); }
 }
 
-/* ---- web playback sdk ---- */
+async function spPickDevice(id){
+  spDevId=id; save('sp_dev',{v:id});
+  // transfer without forcing playback; harmless if nothing is queued yet
+  try{ await spApi('/me/player',{method:'PUT',body:JSON.stringify({device_ids:[id],play:false})}); }
+  catch(_){}
+  spLoadDevices(); setTimeout(spPoll,600);
+}
+
+async function spPlay(payload){
+  if(!spDevId) return spError('Pick a device first — open Spotify on your phone, then tap Refresh.');
+  try{
+    await spApi('/me/player/play'+spDevQ(),{method:'PUT',body:JSON.stringify(payload)});
+    setTimeout(spPoll,500);
+  }catch(e){ spError(e.message); }
+}
+
+async function spTransport(what){
+  if(!spDevId) return spError('Pick a device first.');
+  try{
+    if(what==='next')          await spApi('/me/player/next'+spDevQ(),{method:'POST'});
+    else if(what==='previous') await spApi('/me/player/previous'+spDevQ(),{method:'POST'});
+    else if(spPaused)          await spApi('/me/player/play'+spDevQ(),{method:'PUT'});
+    else                       await spApi('/me/player/pause'+spDevQ(),{method:'PUT'});
+    setTimeout(spPoll,400);    // reflect it without waiting for the next tick
+  }catch(e){ spError(e.message); }
+}
+
+/* ---- now playing: polled, since there are no SDK events for a remote device ---- */
+function spSetNP(item, playing){
+  const t=document.getElementById('np-title'), a=document.getElementById('np-artist'),
+        art=document.getElementById('np-art'), tg=document.getElementById('sp-toggle');
+  if(!item){
+    t.textContent='Nothing playing'; a.textContent='Pick a track below';
+    art.removeAttribute('src'); art.style.visibility='hidden'; tg.textContent='▶'; return;
+  }
+  t.textContent=item.name;
+  a.textContent=((item.artists)||[]).map(x=>x.name).join(', ');
+  const img=(((item.album||{}).images)||[])[0];
+  if(img){ art.src=img.url; art.style.visibility='visible'; }
+  else { art.removeAttribute('src'); art.style.visibility='hidden'; }
+  tg.textContent = playing ? '⏸' : '▶';
+}
+async function spPoll(){
+  if(!spTok.access_token) return;
+  try{
+    const st=await spApi('/me/player');
+    if(!st){ spPaused=true; spSetNP(null); return; }   // 204: nothing active
+    spPaused=!st.is_playing;
+    spSetNP(st.item, st.is_playing);
+    if(st.device && st.device.id && st.device.id!==spDevId && !spDevices.length){
+      spDevId=st.device.id; save('sp_dev',{v:spDevId});
+    }
+  }catch(_){ /* polling stays quiet — a blip shouldn't throw an error card up */ }
+}
+function spStartPoll(){ if(spPollInt||!spTok.access_token) return; spPoll(); spPollInt=setInterval(spPoll,4000); }
+function spStopPoll(){ if(spPollInt){ clearInterval(spPollInt); spPollInt=null; } }
+document.addEventListener('visibilitychange',()=>{ document.hidden ? spStopPoll() : spResumePoll(); });
+function spResumePoll(){ const m=document.getElementById('v-music'); if(m&&m.classList.contains('active')) spStartPoll(); }
+
+/* ---- web playback sdk: desktop only, purely additive ----
+   Adds this browser to the device list. Never loaded on mobile, where it cannot work. */
+const isMobile = isIOS || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 function spInitPlayer(){
-  if(spSdkStarted) return; spSdkStarted=true;
+  if(isMobile || spSdkStarted) return;
+  spSdkStarted=true;
   window.onSpotifyWebPlaybackSDKReady=()=>{
     spPlayer=new Spotify.Player({
       name:'Bachata Rhythm Trainer',
       getOAuthToken: cb => spToken().then(cb).catch(()=>{}),   // SDK pulls a fresh token on demand
       volume:0.85
     });
-    spPlayer.addListener('ready',({device_id})=>{ SP_DEVICE=device_id; });
+    spPlayer.addListener('ready',({device_id})=>{ SP_DEVICE=device_id; spLoadDevices(); });
     spPlayer.addListener('not_ready',()=>{ SP_DEVICE=null; });
-    spPlayer.addListener('player_state_changed', spRenderNP);
     spPlayer.addListener('account_error',()=>spError('Full-track playback needs Spotify Premium.'));
     spPlayer.addListener('authentication_error',()=>spError('Spotify rejected the session. Disconnect and connect again.'));
-    spPlayer.addListener('initialization_error',e=>spError('Player failed to start: '+((e&&e.message)||'unknown')));
     spPlayer.connect();
   };
   const s=document.createElement('script');
   s.src='https://sdk.scdn.co/spotify-player.js';
-  s.onerror=()=>spError('Could not load the Spotify player script — offline, or blocked by an extension.');
+  s.onerror=()=>{};        // no SDK just means one fewer device; Connect still works
   document.body.appendChild(s);
-}
-function spRenderNP(st){
-  if(!st) return;
-  const tr=st.track_window && st.track_window.current_track;
-  if(tr){
-    document.getElementById('np-title').textContent=tr.name;
-    document.getElementById('np-artist').textContent=tr.artists.map(a=>a.name).join(', ');
-    const art=document.getElementById('np-art'), img=(tr.album.images||[])[0];
-    if(img){ art.src=img.url; art.style.visibility='visible'; } else { art.removeAttribute('src'); art.style.visibility='hidden'; }
-  }
-  document.getElementById('sp-toggle').textContent = st.paused ? '▶' : '⏸';
 }
 
 /* ---- search / playlists ---- */
@@ -918,8 +1013,11 @@ function spError(msg){
 function spRoute(){
   document.getElementById('sp-err').style.display='none';
   if(!spClientId())        return spShow('setup');
-  if(!spTok.access_token)  return spShow('login');
-  spShow('connected'); spInitPlayer();
+  if(!spTok.access_token){ spStopPoll(); return spShow('login'); }
+  spShow('connected');
+  spInitPlayer();                 // desktop only; no-op on mobile
+  spLoadDevices();
+  spResumePoll();
 }
 document.getElementById('sp-redirect').textContent=SP_REDIRECT;
 document.getElementById('sp-save').addEventListener('click',()=>{
@@ -930,9 +1028,10 @@ document.getElementById('sp-save').addEventListener('click',()=>{
 document.getElementById('sp-login').addEventListener('click',()=>spLogin());
 document.getElementById('sp-forget').addEventListener('click',()=>{ save('sp_cid',{v:''}); spRoute(); });
 document.getElementById('sp-retry').addEventListener('click',()=>spDisconnect());
-document.getElementById('sp-toggle').addEventListener('click',()=>spPlayer&&spPlayer.togglePlay());
-document.getElementById('sp-next').addEventListener('click',()=>spPlayer&&spPlayer.nextTrack());
-document.getElementById('sp-prev').addEventListener('click',()=>spPlayer&&spPlayer.previousTrack());
+document.getElementById('sp-toggle').addEventListener('click',()=>spTransport('toggle'));
+document.getElementById('sp-next').addEventListener('click',()=>spTransport('next'));
+document.getElementById('sp-prev').addEventListener('click',()=>spTransport('previous'));
+document.getElementById('sp-devrefresh').addEventListener('click',()=>spLoadDevices());
 document.getElementById('sp-tap').addEventListener('click',spTap);
 document.getElementById('sp-search').addEventListener('click',spDoSearch);
 document.getElementById('sp-lists').addEventListener('click',spDoPlaylists);
@@ -975,7 +1074,8 @@ document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   // Spotify playback is deliberately left running — it's the user's music, with its own
   // transport; only sounds this app generates get stopped.
   if(t.dataset.v!=='trainer'){ stopTrainer(); }
-  if(t.dataset.v!=='music'){ mStop(); }
+  if(t.dataset.v!=='music'){ mStop(); spStopPoll(); }
+  else { spResumePoll(); if(spTok.access_token) spLoadDevices(); }   // devices come and go
   if(t.dataset.v!=='game'){ gStopPlay(); if(gPlayBtn.textContent.includes('Stop')) gPlayBtn.textContent='▶  Play a rhythm'; }
   if(t.dataset.v!=='ref' && refStop){ clearInterval(refStop); refStop=null; document.querySelectorAll('.try').forEach(x=>{x.textContent='▶ Hear '+x.dataset.try;x.dataset._on='';}); }
 }));
