@@ -226,6 +226,13 @@
   }
   .mk b{font-variant-numeric:tabular-nums;color:var(--muted);min-width:44px}
   .mk .x{margin-left:auto;color:var(--faint);cursor:pointer;padding:0 6px}
+  .cmpnow{text-align:center;margin:14px 0 16px}
+  .cmpnow b{
+    display:block;font-size:2rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--faint);transition:color .12s;line-height:1.15;
+  }
+  .cmpnow span{font-size:.72rem;color:var(--faint)}
+  #cmp-pairs .dev span{text-transform:none}
   .help{
     margin:0 0 14px;padding:11px 13px;border-radius:11px;
     background:var(--panel-2);border:1px solid var(--line);
@@ -480,6 +487,29 @@
 
   <!-- REFERENCE -->
   <section class="view" id="v-ref">
+    <div class="card">
+      <h2>Hear the difference</h2>
+      <p class="sub">If the three names don't mean anything yet, start here. Two rhythms
+        played back to back, 4 bars each, same tempo — so the only thing changing is the
+        thing you're trying to hear.</p>
+      <div class="cmpnow"><b id="cmp-now">—</b><span id="cmp-next"></span></div>
+      <div id="cmp-pairs">
+        <div class="dev" data-cmp="derecho,mambo"><b>Derecho vs Mambo</b><span>Start here — furthest apart, hardest to miss</span></div>
+        <div class="dev" data-cmp="derecho,majao"><b>Derecho vs Majao</b><span>Next: the verse-to-chorus lift</span></div>
+        <div class="dev" data-cmp="majao,mambo"><b>Majao vs Mambo</b><span>The subtle one. Leave it for last.</span></div>
+        <div class="dev" data-cmp="derecho,majao,mambo"><b>All three in a row</b><span>Once each pair is obvious</span></div>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <label>Tempo</label>
+        <input type="range" id="cmp-bpm" min="90" max="160" value="125">
+        <span class="bpmval"><span id="cmp-bpmv">125</span> bpm</span>
+      </div>
+      <button class="btn" id="cmp-go">▶  Start comparing</button>
+      <p class="note" style="text-align:left">Listen for the güira — the scratchy shaker.
+        Count how fast it goes: steady in derecho, busier in majao, a rapid buzz in mambo.
+        That one instrument tells you almost everything.</p>
+    </div>
+
     <div class="card">
       <h2>The Three Rhythms</h2>
       <p class="sub">Bachata songs move through these sections. Musicality = matching your energy to whichever one is playing right now.</p>
@@ -806,6 +836,66 @@ document.getElementById('tmr-go').addEventListener('click',e=>{
   tInt=setInterval(()=>{ if(tSec<=0){ clearInterval(tInt); tInt=null; try{click(ctx().currentTime,true);click(ctx().currentTime+0.2,true);}catch(_){} document.getElementById('tmr-go').textContent='Start'; return;} tSec--; tShow(); },1000);
 });
 document.getElementById('tmr-rs').addEventListener('click',()=>{ clearInterval(tInt); tInt=null; tSec=600; tShow(); document.getElementById('tmr-go').textContent='Start'; });
+
+/* ============ A/B COMPARE ============
+   Discrimination is easier to learn than recognition: nobody hears "that's majao" cold,
+   but everyone hears "that just changed". So alternate two rhythms over a fixed tempo
+   and change exactly one variable.                                                     */
+const CMP={ seq:['derecho','mambo'], bars:4, bpm:125 };
+let cmpOn=false, cmpInt=null, cmpNext=0, cmpSlot=0, cmpBar=0, cmpIdx=0;
+const cmpNowEl=document.getElementById('cmp-now'), cmpNextEl=document.getElementById('cmp-next');
+function cmpPaint(){
+  const r=CMP.seq[cmpIdx];
+  cmpNowEl.textContent = cmpOn ? r : '—';
+  cmpNowEl.style.color = cmpOn ? 'var(--'+r+')' : 'var(--faint)';
+  cmpNextEl.textContent = cmpOn ? 'next: '+CMP.seq[(cmpIdx+1)%CMP.seq.length] : '';
+}
+function cmpStart(){
+  if(cmpOn) return;
+  cmpOn=true; cmpIdx=0; cmpSlot=0; cmpBar=0;
+  const c=ctx(); cmpNext=c.currentTime+0.1;
+  cmpPaint();
+  document.getElementById('cmp-go').textContent='■  Stop';
+  document.getElementById('cmp-go').classList.add('stop');
+  cmpInt=setInterval(()=>{
+    const c=ctx(), dur=(60/CMP.bpm)/4;
+    while(cmpNext < c.currentTime+0.12){
+      const r=CMP.seq[cmpIdx], p=PAT[r];
+      if(p.guira(cmpSlot)) guira(cmpNext, r==='mambo'?0.22:0.32);
+      const bg=p.bongo(cmpSlot); if(bg) bongo(cmpNext, bg[0]==='hi'?440:250, bg[1]);
+      if(p.bass(cmpSlot)) bass(cmpNext);
+      cmpNext+=dur;
+      if(++cmpSlot>=16){
+        cmpSlot=0;
+        if(++cmpBar>=CMP.bars){
+          cmpBar=0; cmpIdx=(cmpIdx+1)%CMP.seq.length;
+          // repaint when the switch is actually audible, not when it's scheduled
+          setTimeout(cmpPaint, Math.max(0,(cmpNext-c.currentTime)*1000));
+        }
+      }
+    }
+  },25);
+}
+function cmpStop(){
+  cmpOn=false;
+  if(cmpInt){ clearInterval(cmpInt); cmpInt=null; }
+  const b=document.getElementById('cmp-go');
+  b.textContent='▶  Start comparing'; b.classList.remove('stop');
+  cmpPaint();
+}
+document.querySelectorAll('#cmp-pairs .dev').forEach(d=>d.addEventListener('click',()=>{
+  document.querySelectorAll('#cmp-pairs .dev').forEach(x=>x.classList.remove('sel'));
+  d.classList.add('sel');
+  CMP.seq=d.dataset.cmp.split(',');
+  if(cmpOn){ cmpStop(); cmpStart(); }        // relock to the new pair immediately
+  else cmpPaint();
+}));
+document.querySelector('#cmp-pairs .dev').classList.add('sel');
+document.getElementById('cmp-go').addEventListener('click',()=>cmpOn?cmpStop():cmpStart());
+{
+  const cb=document.getElementById('cmp-bpm'), cv=document.getElementById('cmp-bpmv');
+  cb.addEventListener('input',()=>{ CMP.bpm=+cb.value; cv.textContent=cb.value; });
+}
 
 /* ============ REFERENCE "try" buttons ============ */
 let refStop=null;
@@ -1389,6 +1479,7 @@ document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   // Spotify playback is deliberately left running — it's the user's music, with its own
   // transport; only sounds this app generates get stopped.
   if(t.dataset.v!=='trainer'){ stopTrainer(); }
+  if(t.dataset.v!=='ref'){ cmpStop(); }
   if(t.dataset.v!=='music'){ mStop(); spStopPoll(); }
   else { spResumePoll(); if(spTok.access_token) spLoadDevices(); }   // devices come and go
   if(t.dataset.v!=='game'){ gStopPlay(); if(gPlayBtn.textContent.includes('Stop')) gPlayBtn.textContent='▶  Play a rhythm'; }
