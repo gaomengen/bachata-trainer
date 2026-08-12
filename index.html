@@ -231,6 +231,10 @@
         <div class="tg" data-inst="count">Count 1-2-3-4</div>
       </div>
       <button class="btn" id="play">▶  Start</button>
+      <p class="note" id="audio-hint" style="display:none;text-align:left;margin-bottom:0">
+        Silence on iPhone? Check the ring/silent switch on the side — iOS mutes web audio
+        when it's set to silent.
+      </p>
     </div>
     <p class="note">Tip: start at 110–120 bpm. Speed up only once your basic stays clean.</p>
   </section>
@@ -413,6 +417,51 @@ function load(k,d){ try{ const v=JSON.parse(localStorage.getItem(LS+k)); return 
 /* ============ AUDIO ENGINE ============ */
 let AC=null;
 function ctx(){ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
+
+/* ---- iOS unlock ----
+   Two separate problems on iPhone/iPad (all browsers there are WebKit, Chrome included):
+
+   1. The AudioContext starts suspended until a user gesture. ctx() resumes it, but that
+      only works if the very first call happens inside a real gesture handler.
+   2. Web Audio runs in iOS's "ambient" audio session, which the physical ring/silent
+      switch mutes. Everything looks fine — context running, notes scheduled — and you
+      hear nothing. Playing a silent HTML5 <audio> element moves the page to the media
+      playback session, which ignores the switch. It has to keep looping to hold it.     */
+const SILENT_WAV='data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YSADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
+let silentEl=null, audioReady=false;
+function unlockAudio(){
+  const c=ctx();                                   // create/resume inside the gesture
+  if(c.state==='suspended') c.resume().catch(()=>{});
+  if(!silentEl){
+    silentEl=document.createElement('audio');
+    silentEl.src=SILENT_WAV; silentEl.loop=true;
+    silentEl.setAttribute('playsinline','');       // iOS: don't hand off to the fullscreen player
+    silentEl.volume=0.01;                          // not muted — a muted element holds no session
+    silentEl.style.display='none';
+    document.body.appendChild(silentEl);           // iOS is unreliable with detached media
+  }
+  const p=silentEl.play();
+  if(p && p.catch) p.catch(()=>{});                // rejected outside a gesture; harmless
+  audioReady = c.state==='running';
+  updateAudioHint();
+}
+// prime on the very first interaction anywhere, as the README always claimed
+['pointerdown','touchend','click'].forEach(ev =>
+  document.addEventListener(ev, unlockAudio, {once:true, capture:true}));
+// iOS suspends the context when the page is backgrounded; take it back on return
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden && AC && AC.state==='suspended') AC.resume().catch(()=>{});
+});
+
+// The ring/silent switch can't be read from JS, so if the context is running and there's
+// still no sound, say so rather than leaving the user guessing.
+const isIOS = /iP(hone|ad|od)/.test(navigator.platform) ||
+              (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1) ||
+              /iPhone|iPad|iPod/.test(navigator.userAgent);
+function updateAudioHint(){
+  const el=document.getElementById('audio-hint'); if(!el) return;
+  el.style.display = isIOS ? '' : 'none';
+}
 const master=()=>{ const c=ctx(); if(!c._m){ c._m=c.createGain(); c._m.gain.value=0.9; c._m.connect(c.destination);} return c._m; };
 
 // noise buffer for güira scrape
