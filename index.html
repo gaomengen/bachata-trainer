@@ -203,6 +203,34 @@
   .dev span{font-size:.72rem;color:var(--faint);text-transform:capitalize}
   .dev.sel{border-color:var(--accent)}
   .dev.sel b{color:var(--accent)}
+
+  /* rhythm map */
+  .nowr{display:flex;align-items:baseline;justify-content:space-between;margin:6px 0 8px}
+  .nowr b{font-size:1.45rem;letter-spacing:1px;text-transform:uppercase}
+  .nowr span{font-variant-numeric:tabular-nums;color:var(--faint);font-size:.8rem}
+  .tl{
+    position:relative;height:30px;border-radius:8px;overflow:hidden;
+    background:var(--panel-2);border:1px solid var(--line);display:flex;
+  }
+  .tl .seg{height:100%}
+  .tl-head{
+    position:absolute;top:0;bottom:0;width:2px;background:#fff;
+    box-shadow:0 0 6px rgba(255,255,255,.8);left:0;pointer-events:none;
+  }
+  .tl-key{display:flex;gap:14px;margin-top:8px;font-size:.7rem;color:var(--faint)}
+  .tl-key i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+  #map-list{margin-top:12px}
+  .mk{
+    display:flex;align-items:center;gap:10px;padding:6px 0;font-size:.8rem;
+    border-bottom:1px solid rgba(255,255,255,.04);
+  }
+  .mk b{font-variant-numeric:tabular-nums;color:var(--muted);min-width:44px}
+  .mk .x{margin-left:auto;color:var(--faint);cursor:pointer;padding:0 6px}
+  #map-json{
+    width:100%;height:120px;margin-top:10px;padding:10px;font-family:ui-monospace,Menlo,monospace;
+    font-size:.7rem;border-radius:10px;border:1.5px solid var(--line);
+    background:var(--panel-2);color:var(--txt);
+  }
 </style>
 </head>
 <body>
@@ -354,6 +382,48 @@
         <div class="tg" data-mclick="1">Count-in click</div>
       </div>
       <p class="note" style="text-align:left">Dance your basic to the real song. Beat 4 is still your accent.</p>
+    </div>
+
+    <!-- rhythm map: hand-labelled sections, played back against the song -->
+    <div class="card" id="sp-map" style="display:none">
+      <h2>Rhythm map</h2>
+      <p class="sub" id="map-sub">Play a song to see its map.</p>
+
+      <div class="nowr">
+        <b id="map-now">—</b>
+        <span id="map-time">0:00</span>
+      </div>
+      <div class="tl" id="map-tl"><div class="tl-head" id="map-head"></div></div>
+      <div class="tl-key">
+        <span><i style="background:var(--derecho)"></i>Derecho</span>
+        <span><i style="background:var(--majao)"></i>Majao</span>
+        <span><i style="background:var(--mambo)"></i>Mambo</span>
+      </div>
+
+      <div id="map-idle">
+        <button class="btn ghost sm" id="map-start">Label this song</button>
+      </div>
+
+      <div id="map-edit" style="display:none">
+        <p class="sub" style="margin-top:14px">Tap a rhythm the moment it changes. Marks land
+          250&nbsp;ms early to cover reaction time.</p>
+        <div class="pills">
+          <div class="pill" data-mark="derecho">Derecho</div>
+          <div class="pill" data-mark="majao">Majao</div>
+          <div class="pill" data-mark="mambo">Mambo</div>
+        </div>
+        <div class="btnrow">
+          <button class="btn ghost sm" id="map-undo">Undo last</button>
+          <button class="btn sm" id="map-save">Save map</button>
+        </div>
+        <div id="map-list"></div>
+      </div>
+
+      <div class="btnrow" style="margin-top:12px">
+        <button class="btn ghost sm" id="map-export">Export all maps</button>
+        <button class="btn ghost sm" id="map-del">Delete this map</button>
+      </div>
+      <textarea id="map-json" readonly style="display:none"></textarea>
     </div>
 
     <!-- one-tap practice picks -->
@@ -892,18 +962,155 @@ async function spPoll(){
   if(!spTok.access_token) return;
   try{
     const st=await spApi('/me/player');
-    if(!st){ spPaused=true; spSetNP(null); return; }   // 204: nothing active
+    if(!st){ spPaused=true; spSetNP(null); spPos.id=null; mapRender(); return; }   // 204: nothing active
     spPaused=!st.is_playing;
     spSetNP(st.item, st.is_playing);
+    // sample the playhead; between polls we advance it from the local clock, so the
+    // timeline stays smooth without polling fast enough to annoy the rate limiter
+    spPos={ id:(st.item||{}).id||null, ms:st.progress_ms||0, at:Date.now(),
+            dur:(st.item||{}).duration_ms||0, playing:!!st.is_playing,
+            name:(st.item||{}).name||'', artist:(((st.item||{}).artists)||[]).map(a=>a.name).join(', ') };
+    mapSyncTrack();
     if(st.device && st.device.id && st.device.id!==spDevId && !spDevices.length){
       spDevId=st.device.id; save('sp_dev',{v:spDevId});
     }
   }catch(_){ /* polling stays quiet — a blip shouldn't throw an error card up */ }
 }
 function spStartPoll(){ if(spPollInt||!spTok.access_token) return; spPoll(); spPollInt=setInterval(spPoll,4000); }
-function spStopPoll(){ if(spPollInt){ clearInterval(spPollInt); spPollInt=null; } }
+
+/* ============ RHYTHM MAP ============
+   Hand-laboured, not detected. No API labels bachata sections, and guessing them from
+   audio would teach the wrong thing — a map is only useful here if it's right.
+   A map is a sorted list of {t, r}: at t seconds the song switches to rhythm r, and
+   stays there until the next mark.                                                    */
+const BUILTIN_MAPS={};                       // baked-in maps ship here; user maps override
+let MAPS=load('maps',{});
+let spPos={id:null,ms:0,at:0,dur:0,playing:false,name:'',artist:''};
+let mapEditing=false, mapDraft=[], mapRaf=null, mapLastId=null;
+const MARK_LEAD=0.25;                        // seconds shaved off to cover reaction time
+
+const mapFor = id => (id && (MAPS[id]||BUILTIN_MAPS[id])) || null;
+function mapNowMs(){
+  if(!spPos.id) return 0;
+  const ms = spPos.playing ? spPos.ms + (Date.now()-spPos.at) : spPos.ms;
+  return Math.max(0, Math.min(spPos.dur||ms, ms));
+}
+const fmt = ms => Math.floor(ms/60000)+':'+String(Math.floor(ms/1000)%60).padStart(2,'0');
+function rhythmAt(marks, sec){
+  let r=null;
+  for(const m of marks){ if(m.t<=sec) r=m.r; else break; }
+  return r;
+}
+// a track change mid-session shouldn't leave a half-finished draft on the wrong song
+function mapSyncTrack(){
+  if(spPos.id!==mapLastId){
+    mapLastId=spPos.id;
+    if(mapEditing) mapStopEdit(false);
+    mapRender();
+  }
+}
+function mapSegments(marks, durSec){
+  const segs=[], sorted=[...marks].sort((a,b)=>a.t-b.t);
+  if(!sorted.length) return segs;
+  if(sorted[0].t>0) segs.push({from:0,to:sorted[0].t,r:null});     // unlabelled head
+  sorted.forEach((m,i)=>segs.push({from:m.t,to:i+1<sorted.length?sorted[i+1].t:durSec,r:m.r}));
+  return segs;
+}
+function mapRender(){
+  const sub=document.getElementById('map-sub'), tl=document.getElementById('map-tl'),
+        idle=document.getElementById('map-idle'), del=document.getElementById('map-del');
+  const saved=mapFor(spPos.id);
+  const marks= mapEditing ? mapDraft : (saved||[]);
+  const durSec=(spPos.dur||0)/1000;
+
+  if(!spPos.id){
+    sub.textContent='Play a song to see its map.';
+    idle.style.display='none'; del.style.display='none';
+  } else if(mapEditing){
+    sub.textContent='Labelling “'+spPos.name+'” — '+mapDraft.length+' mark'+(mapDraft.length===1?'':'s');
+    idle.style.display='none'; del.style.display='none';
+  } else if(saved){
+    sub.textContent='“'+spPos.name+'” — '+saved.length+' sections mapped.';
+    idle.style.display=''; document.getElementById('map-start').textContent='Edit this map';
+    del.style.display='';
+  } else {
+    sub.textContent='No map for “'+spPos.name+'” yet. Play it and label the changes as you hear them.';
+    idle.style.display=''; document.getElementById('map-start').textContent='Label this song';
+    del.style.display='none';
+  }
+
+  // segments
+  [...tl.querySelectorAll('.seg')].forEach(x=>x.remove());
+  if(durSec>0){
+    mapSegments(marks,durSec).forEach(s=>{
+      const d=document.createElement('div'); d.className='seg';
+      d.style.width=Math.max(0,((s.to-s.from)/durSec*100))+'%';
+      d.style.background = s.r ? 'var(--'+s.r+')' : 'transparent';
+      d.title=(s.r||'unlabelled')+' '+fmt(s.from*1000);
+      tl.insertBefore(d, document.getElementById('map-head'));
+    });
+  }
+  mapRenderList();
+}
+function mapRenderList(){
+  const box=document.getElementById('map-list'); if(!box) return;
+  box.innerHTML='';
+  if(!mapEditing) return;
+  [...mapDraft].sort((a,b)=>a.t-b.t).forEach((m)=>{
+    const row=document.createElement('div'); row.className='mk';
+    const t=document.createElement('b'); t.textContent=fmt(m.t*1000);
+    const r=document.createElement('span'); r.textContent=m.r; r.style.color='var(--'+m.r+')';
+    const x=document.createElement('span'); x.className='x'; x.textContent='✕';
+    x.addEventListener('click',()=>{ mapDraft=mapDraft.filter(q=>q!==m); mapRender(); });
+    row.append(t,r,x); box.appendChild(row);
+  });
+}
+function mapTick(){
+  const head=document.getElementById('map-head'), now=document.getElementById('map-now'),
+        tm=document.getElementById('map-time');
+  const ms=mapNowMs(), durSec=(spPos.dur||0)/1000;
+  if(durSec>0){ head.style.left=Math.min(100,(ms/1000)/durSec*100)+'%'; head.style.display=''; }
+  else head.style.display='none';
+  tm.textContent=fmt(ms)+(spPos.dur?' / '+fmt(spPos.dur):'');
+  const marks = mapEditing ? mapDraft : (mapFor(spPos.id)||[]);
+  const r=rhythmAt([...marks].sort((a,b)=>a.t-b.t), ms/1000);
+  now.textContent = r || (spPos.id?'—':'');
+  now.style.color = r ? 'var(--'+r+')' : 'var(--faint)';
+  mapRaf=requestAnimationFrame(mapTick);
+}
+function mapStartRaf(){ if(!mapRaf) mapRaf=requestAnimationFrame(mapTick); }
+function mapStopRaf(){ if(mapRaf){ cancelAnimationFrame(mapRaf); mapRaf=null; } }
+
+function mapStartEdit(){
+  if(!spPos.id) return spError('Start a song first, then label it as it plays.');
+  mapEditing=true; mapDraft=[...(mapFor(spPos.id)||[])];
+  document.getElementById('map-edit').style.display='';
+  mapRender();
+}
+function mapStopEdit(save){
+  if(save && spPos.id){
+    if(mapDraft.length) MAPS[mapLastId||spPos.id]=[...mapDraft].sort((a,b)=>a.t-b.t);
+    else delete MAPS[mapLastId||spPos.id];
+    save_maps();
+  }
+  mapEditing=false; mapDraft=[];
+  document.getElementById('map-edit').style.display='none';
+  mapRender();
+}
+function save_maps(){ save('maps',MAPS); }
+function mapAddMark(r){
+  if(!mapEditing) return;
+  const t=Math.max(0, mapNowMs()/1000 - MARK_LEAD);
+  mapDraft=mapDraft.filter(m=>Math.abs(m.t-t)>0.4);   // retap replaces a near-duplicate
+  mapDraft.push({t:+t.toFixed(2), r});
+  mapRender();
+}
+function spStopPoll(){ if(spPollInt){ clearInterval(spPollInt); spPollInt=null; } mapStopRaf(); }
 document.addEventListener('visibilitychange',()=>{ document.hidden ? spStopPoll() : spResumePoll(); });
-function spResumePoll(){ const m=document.getElementById('v-music'); if(m&&m.classList.contains('active')) spStartPoll(); }
+function spResumePoll(){
+  const m=document.getElementById('v-music');
+  if(m&&m.classList.contains('active')){ spStartPoll(); mapStartRaf(); }
+}
 
 /* ---- web playback sdk: desktop only, purely additive ----
    Adds this browser to the device list. Never loaded on mobile, where it cannot work. */
@@ -1070,6 +1277,7 @@ function spShow(s){
   document.getElementById('sp-setup').style.display      = s==='setup'    ?'':'none';
   document.getElementById('sp-login-card').style.display = s==='login'    ?'':'none';
   document.getElementById('sp-player').style.display     = s==='connected'?'':'none';
+  document.getElementById('sp-map').style.display        = s==='connected'?'':'none';
   document.getElementById('sp-picks').style.display      = s==='connected'?'':'none';
   document.getElementById('sp-browse').style.display     = s==='connected'?'':'none';
 }
@@ -1101,6 +1309,23 @@ document.getElementById('sp-prev').addEventListener('click',()=>spTransport('pre
 document.getElementById('sp-devrefresh').addEventListener('click',()=>spLoadDevices());
 document.querySelectorAll('[data-plq]').forEach(b =>
   b.addEventListener('click',()=>spPlaylistSearch(b.dataset.plq)));
+document.getElementById('map-start').addEventListener('click',mapStartEdit);
+document.getElementById('map-save').addEventListener('click',()=>mapStopEdit(true));
+document.getElementById('map-undo').addEventListener('click',()=>{ mapDraft.pop(); mapRender(); });
+document.querySelectorAll('[data-mark]').forEach(p =>
+  p.addEventListener('click',()=>mapAddMark(p.dataset.mark)));
+document.getElementById('map-del').addEventListener('click',()=>{
+  if(!spPos.id) return;
+  delete MAPS[spPos.id]; save_maps(); mapRender();
+});
+document.getElementById('map-export').addEventListener('click',()=>{
+  const ta=document.getElementById('map-json');
+  const on=ta.style.display!=='none';
+  if(on){ ta.style.display='none'; return; }
+  ta.value=JSON.stringify(MAPS,null,1);
+  ta.style.display=''; ta.select();
+  try{ document.execCommand('copy'); }catch(_){}
+});
 document.getElementById('sp-tap').addEventListener('click',spTap);
 document.getElementById('sp-search').addEventListener('click',spDoSearch);
 document.getElementById('sp-lists').addEventListener('click',spDoPlaylists);
