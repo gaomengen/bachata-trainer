@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bachata Steps &amp; Styles — a beginner's reference</title>
+<meta name="description" content="The basic bachata steps — side basic, forward-and-back, box step — animated on the beat, plus what makes each bachata style different.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230e0b14'/><rect x='11' y='38' width='6' height='14' rx='3' fill='%235eb1ff'/><rect x='23' y='31' width='6' height='21' rx='3' fill='%23ffb454'/><rect x='35' y='24' width='6' height='28' rx='3' fill='%23ff5d8f'/><rect x='47' y='16' width='6' height='36' rx='3' fill='%23b98cff'/></svg>">
+<meta name="theme-color" content="#0e0b14">
+<style>
+  :root{
+    --bg:#0e0b14; --panel:#1a1524; --panel-2:#221a30; --line:#332a45;
+    --txt:#f4f0fa; --muted:#a99fc0; --faint:#726a86;
+    --derecho:#5eb1ff; --majao:#ffb454; --mambo:#ff5d8f;
+    --good:#4ad991; --accent:#b98cff; --radius:16px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 50% -10%, #241a38 0%, var(--bg) 55%);
+    color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh;padding:0 0 60px;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:620px;margin:0 auto;padding:0 16px}
+  header{text-align:center;padding:26px 16px 6px}
+  header h1{font-size:1.5rem;margin:0;letter-spacing:.2px}
+  header p{margin:6px 0 0;color:var(--muted);font-size:.86rem}
+  .card{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:16px 0;
+  }
+  h2{margin:0 0 6px;font-size:1.1rem}
+  h3{margin:20px 0 4px;font-size:.98rem}
+  .sub{color:var(--muted);font-size:.85rem;line-height:1.55;margin:0 0 14px}
+  p{font-size:.87rem;line-height:1.6;color:#ded7ec}
+  a{color:var(--derecho)}
+  .note{font-size:.78rem;color:var(--faint);line-height:1.55}
+
+  /* step picker */
+  .pills{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .pill{
+    flex:1;min-width:96px;padding:11px 8px;border-radius:12px;border:1.5px solid var(--line);
+    background:var(--panel-2);color:var(--muted);font-weight:700;font-size:.83rem;
+    cursor:pointer;text-align:center;
+  }
+  .pill.sel{border-color:var(--accent);color:var(--accent)}
+
+  /* floor + feet */
+  .floor{
+    position:relative;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:14px;height:230px;overflow:hidden;margin-bottom:12px;
+  }
+  .foot{
+    position:absolute;width:42px;height:62px;border-radius:21px/28px;
+    border:2px solid var(--line);background:#2b2340;
+    transition:left .16s ease, top .16s ease, transform .1s, background .1s, border-color .1s;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.72rem;font-weight:700;color:var(--faint);
+  }
+  .foot.on{background:var(--accent);border-color:var(--accent);color:#160f22;transform:scale(1.08)}
+  .foot.tap{background:transparent;border-color:var(--mambo);color:var(--mambo);border-style:dashed;transform:scale(1.12)}
+  .ghostline{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.06)}
+
+  /* counter */
+  .counts{display:flex;justify-content:center;gap:9px;margin:4px 0 12px}
+  .ct{
+    width:38px;height:38px;border-radius:50%;border:2px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-weight:700;
+    color:var(--faint);font-size:.9rem;
+  }
+  .ct.on{background:var(--accent);border-color:var(--accent);color:#160f22;transform:scale(1.1)}
+  .ct.tapbeat{border-style:dashed}
+  .ct.tapbeat.on{background:var(--mambo);border-color:var(--mambo)}
+  .cue{text-align:center;min-height:1.4em;font-size:.9rem;font-weight:600;color:var(--muted);margin-bottom:10px}
+
+  .row{display:flex;align-items:center;gap:12px;margin:12px 0}
+  .row label{font-size:.8rem;color:var(--muted);min-width:52px}
+  input[type=range]{flex:1;accent-color:var(--accent);height:26px}
+  .bpmval{font-variant-numeric:tabular-nums;font-weight:700;min-width:66px;text-align:right;white-space:nowrap}
+  .btn{
+    width:100%;padding:15px;border:none;border-radius:14px;font-size:1rem;font-weight:700;
+    cursor:pointer;background:var(--accent);color:#160f22;margin-top:4px;
+  }
+  .btn.stop{background:#3a2f4e;color:var(--txt)}
+  .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--txt)}
+  .btnrow{display:flex;gap:10px}
+  .toggles{display:flex;gap:8px;margin-top:10px}
+  .tg{flex:1;padding:9px;border-radius:10px;border:1.5px solid var(--line);background:var(--panel-2);color:var(--muted);font-size:.76rem;font-weight:600;cursor:pointer;text-align:center}
+  .tg.on{border-color:var(--accent);color:var(--txt)}
+
+  ol.steps{margin:8px 0 0;padding-left:20px;font-size:.86rem;line-height:1.75;color:#ded7ec}
+  ol.steps b{color:var(--txt)}
+  .warn{
+    margin-top:14px;padding:11px 13px;border-radius:11px;
+    background:rgba(255,93,143,.08);border:1px solid rgba(255,93,143,.3);
+    font-size:.82rem;line-height:1.55;color:#ffd4e1;
+  }
+  .style{border-left:4px solid var(--line);padding-left:14px;margin:18px 0}
+  .style.dom{border-color:var(--derecho)}
+  .style.sen{border-color:var(--mambo)}
+  .style.mod{border-color:var(--majao)}
+  .style.trad{border-color:var(--accent)}
+  .style h3{margin:0 0 2px}
+  .style .tag{font-size:.68rem;color:var(--faint);text-transform:uppercase;letter-spacing:1px}
+  .slot{
+    border:1.5px dashed var(--line);border-radius:12px;padding:16px;text-align:center;
+    color:var(--faint);font-size:.8rem;line-height:1.5;margin-top:12px;
+  }
+  .back{display:inline-block;margin:18px 0 0;font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌹 Steps &amp; Styles</h1>
+  <p>The basics, animated on the beat — plus what makes each style different</p>
+</header>
+
+<div class="wrap">
+
+  <!-- ANIMATED STEP TRAINER -->
+  <div class="card">
+    <h2>The basic steps</h2>
+    <p class="sub">Every one of these is <b>three steps and a tap</b>, over a count of 4.
+      The tap is the signature of bachata — that's where the hip pops. Pick a step and
+      watch which foot lights up.</p>
+
+    <div class="pills">
+      <div class="pill sel" data-step="side">Side basic</div>
+      <div class="pill" data-step="fwd">Forward &amp; back</div>
+      <div class="pill" data-step="box">Box step</div>
+    </div>
+
+    <div class="counts" id="counts"></div>
+    <div class="cue" id="cue">Press start</div>
+
+    <div class="floor" id="floor">
+      <div class="ghostline"></div>
+      <div class="foot" id="footL">L</div>
+      <div class="foot" id="footR">R</div>
+    </div>
+
+    <div class="row">
+      <label>Tempo</label>
+      <input type="range" id="bpm" min="50" max="150" value="80">
+      <span class="bpmval"><span id="bpmv">80</span> bpm</span>
+    </div>
+    <p class="note">Start slow — 60–80 bpm. Real bachata runs 120–140, but nobody learns
+      footwork at full speed.</p>
+    <div class="toggles">
+      <div class="tg on" data-opt="click">Click</div>
+      <div class="tg on" data-opt="voice">Count out loud</div>
+    </div>
+    <button class="btn" id="go">▶  Start</button>
+  </div>
+
+  <!-- WRITTEN BREAKDOWN -->
+  <div class="card">
+    <h2>What you're doing, in words</h2>
+
+    <h3 style="color:var(--derecho)">1 · Side basic</h3>
+    <p class="sub" style="margin-bottom:4px">The one you'll use most. Also called the
+      side-to-side or lateral basic.</p>
+    <ol class="steps">
+      <li><b>1</b> — step to the left with your left foot</li>
+      <li><b>2</b> — bring your right foot to meet it, take the weight</li>
+      <li><b>3</b> — step left again with your left foot</li>
+      <li><b>4</b> — <b>tap</b> your right toe beside your left, and pop the hip</li>
+      <li><b>5–8</b> — the same thing mirrored, travelling right</li>
+    </ol>
+
+    <h3 style="color:var(--majao)">2 · Forward &amp; back basic</h3>
+    <p class="sub" style="margin-bottom:4px">Same rhythm, different direction. This is the
+      one you'll dance in closed position with a partner.</p>
+    <ol class="steps">
+      <li><b>1</b> — step forward with your left</li>
+      <li><b>2</b> — right foot steps in place</li>
+      <li><b>3</b> — left foot comes back to centre</li>
+      <li><b>4</b> — <b>tap</b> right, hip pops</li>
+      <li><b>5–8</b> — mirrored, stepping back with the right</li>
+    </ol>
+
+    <h3 style="color:var(--mambo)">3 · Box step</h3>
+    <p class="sub" style="margin-bottom:4px">The two basics joined into a square. Good for
+      learning to change direction without losing the count.</p>
+    <ol class="steps">
+      <li><b>1–4</b> — a side basic to the left, ending on the tap</li>
+      <li><b>5–8</b> — a forward-and-back basic, ending on the tap</li>
+    </ol>
+    <p class="note" style="margin-top:8px">Teachers vary on the box — some travel forward on
+      1–4 and sideways on 5–8, some square it off differently. Any version that keeps three
+      steps and a tap per four counts is doing the job.</p>
+
+    <div class="warn">
+      <b>The three things beginners get wrong:</b><br>
+      1. Skipping the tap on 4. Without it you're just walking.<br>
+      2. Stepping too big. Bachata steps are small — a shoe's length.<br>
+      3. Rushing. The tap is a whole beat, not a hurried afterthought.
+    </div>
+  </div>
+
+  <!-- STYLES -->
+  <div class="card">
+    <h2>The styles</h2>
+    <p class="sub">Same music, same count of four. What changes is the body, the hold, and
+      what you do with the space.</p>
+
+    <div class="style dom">
+      <span class="tag">Where it started</span>
+      <h3>Dominican</h3>
+      <p>The original, from the Dominican Republic. Danced close but loose, with lots of
+        free footwork and playful improvisation. Footwork-forward — expect taps, syncopations
+        and quick changes, especially when the music goes into a mambo. Tends to be bouncier
+        and more relaxed than the styles that grew out of it.</p>
+    </div>
+
+    <div class="style sen">
+      <span class="tag">Body-led</span>
+      <h3>Sensual</h3>
+      <p>Developed in Spain in the 2000s. Much closer hold, far less footwork, and the
+        movement comes from the body — waves, isolations, circular motion through the ribcage
+        and hips. Heavily partner-connected, so it depends on lead and follow rather than
+        individual footwork.</p>
+    </div>
+
+    <div class="style mod">
+      <span class="tag">Turn-heavy</span>
+      <h3>Moderna / Urban</h3>
+      <p>Bridges the two. Keeps the Dominican footwork base but adds turn patterns, open
+        position work, and figures borrowed from salsa and urban dance. This is what's most
+        commonly taught in social classes outside the DR.</p>
+    </div>
+
+    <div class="style trad">
+      <span class="tag">Old-school</span>
+      <h3>Traditional / Bachatango and other fusions</h3>
+      <p>Traditional bachata is the closed-hold, side-to-side social dancing the music was
+        written for — no turns, just connection and musicality. Fusions like bachatango
+        graft moves from other dances on top; they're fun, but learn a base style first.</p>
+    </div>
+
+    <p class="note">Which to learn first is mostly about your local scene — dance whichever
+      one the people around you are dancing. The basic step is the same either way, which is
+      why it's worth drilling before you pick a lane.</p>
+  </div>
+
+  <!-- SLOTS FOR REAL FOOTAGE -->
+  <div class="card">
+    <h2>Adding video later</h2>
+    <p class="sub">These diagrams show timing and weight, not body movement — for that
+      you need real footage. Film it yourself and drop the files in beside this page, or
+      link out to a teacher you trust.</p>
+    <div class="slot">Side basic — your clip here<br><span style="font-size:.72rem">add
+      <code>steps-side.mp4</code> next to this file and it'll play here</span></div>
+    <div class="slot">Sensual body movement — your clip here</div>
+    <p class="note" style="margin-top:14px">Filming your own is worth it: it's free of
+      copyright worries, and it shows the style your students will actually see in class.</p>
+  </div>
+
+  <a class="back" href="/">← back to the trainer</a>
+</div>
+
+<script>
+/* ---- audio: one click, same engine idea as the trainer ---- */
+let AC=null;
+function ctx(){ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
+let silentEl=null;
+const SILENT='data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YSADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
+function unlock(){                                   // iOS: same ring/silent-switch problem
+  const c=ctx(); if(c.state==='suspended') c.resume().catch(()=>{});
+  if(!silentEl){ silentEl=document.createElement('audio'); silentEl.src=SILENT;
+    silentEl.loop=true; silentEl.setAttribute('playsinline',''); silentEl.volume=0.01;
+    silentEl.style.display='none'; document.body.appendChild(silentEl); }
+  const p=silentEl.play(); if(p&&p.catch) p.catch(()=>{});
+}
+['pointerdown','touchend','click'].forEach(e=>document.addEventListener(e,unlock,{once:true,capture:true}));
+function click(t,hi){
+  const c=ctx(), o=c.createOscillator(), g=c.createGain();
+  o.type='square'; o.frequency.value=hi?1500:950;
+  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.2,t+.003);
+  g.gain.exponentialRampToValueAtTime(.0001,t+.06);
+  o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+.08);
+}
+function say(text){
+  if(!OPT.voice || !window.speechSynthesis) return;
+  const u=new SpeechSynthesisUtterance(text); u.rate=1.35; u.volume=.9;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
+
+/* ---- step patterns ----
+   Positions are percentages of the floor box. Each count says where each foot sits,
+   which one is acting, and whether that action is a tap rather than a step.        */
+const C={lx:34,rx:53,my:44};                          // neutral: left foot, right foot, mid height
+const STEPS={
+  side:{
+    name:'Side basic',
+    frames:[
+      {L:[18,44],R:[53,44],act:'L',cue:'left foot steps LEFT'},
+      {L:[18,44],R:[37,44],act:'R',cue:'right foot closes'},
+      {L:[8,44], R:[37,44],act:'L',cue:'left steps left again'},
+      {L:[8,44], R:[27,44],act:'R',tap:1,cue:'TAP right — pop the hip'},
+      {L:[8,44], R:[62,44],act:'R',cue:'right foot steps RIGHT'},
+      {L:[43,44],R:[62,44],act:'L',cue:'left foot closes'},
+      {L:[43,44],R:[72,44],act:'R',cue:'right steps right again'},
+      {L:[53,44],R:[72,44],act:'L',tap:1,cue:'TAP left — pop the hip'}
+    ]
+  },
+  fwd:{
+    name:'Forward & back',
+    frames:[
+      {L:[34,14],R:[53,44],act:'L',cue:'left steps FORWARD'},
+      {L:[34,14],R:[53,44],act:'R',cue:'right steps in place'},
+      {L:[34,44],R:[53,44],act:'L',cue:'left comes back'},
+      {L:[34,44],R:[46,44],act:'R',tap:1,cue:'TAP right — pop the hip'},
+      {L:[34,44],R:[53,74],act:'R',cue:'right steps BACK'},
+      {L:[34,44],R:[53,74],act:'L',cue:'left steps in place'},
+      {L:[34,44],R:[53,44],act:'R',cue:'right comes back'},
+      {L:[41,44],R:[53,44],act:'L',tap:1,cue:'TAP left — pop the hip'}
+    ]
+  },
+  box:{
+    name:'Box step',
+    frames:[
+      {L:[18,44],R:[53,44],act:'L',cue:'left steps LEFT'},
+      {L:[18,44],R:[37,44],act:'R',cue:'right closes'},
+      {L:[8,44], R:[37,44],act:'L',cue:'left steps left'},
+      {L:[8,44], R:[27,44],act:'R',tap:1,cue:'TAP — corner one'},
+      {L:[8,14], R:[27,44],act:'L',cue:'left steps FORWARD'},
+      {L:[8,14], R:[27,14],act:'R',cue:'right joins forward'},
+      {L:[8,44], R:[27,14],act:'L',cue:'left steps back'},
+      {L:[8,44], R:[19,44],act:'R',tap:1,cue:'TAP — square closed'}
+    ]
+  }
+};
+const OPT={click:true, voice:true};
+let stepKey='side', playing=false, timer=null, beat=0, nextT=0;
+
+const footL=document.getElementById('footL'), footR=document.getElementById('footR'),
+      cueEl=document.getElementById('cue'), countsEl=document.getElementById('counts'),
+      bpmEl=document.getElementById('bpm'), bpmv=document.getElementById('bpmv'),
+      goBtn=document.getElementById('go');
+let BPM=80;
+
+for(let i=0;i<8;i++){
+  const d=document.createElement('div');
+  d.className='ct'+((i===3||i===7)?' tapbeat':'');
+  d.textContent=i+1; countsEl.appendChild(d);
+}
+// `b` is passed in rather than read from the shared counter: the scheduler runs ahead of
+// the audio, so by the time this fires the counter has already moved on.
+function place(f,b){
+  footL.style.left=f.L[0]+'%'; footL.style.top=f.L[1]+'%';
+  footR.style.left=f.R[0]+'%'; footR.style.top=f.R[1]+'%';
+  footL.className='foot'+(f.act==='L'?(f.tap?' tap':' on'):'');
+  footR.className='foot'+(f.act==='R'?(f.tap?' tap':' on'):'');
+  cueEl.textContent=f.cue;
+  [...countsEl.children].forEach((c,i)=>c.classList.toggle('on', i===b));
+}
+function reset(){
+  const f=STEPS[stepKey].frames[0];
+  footL.style.left=C.lx+'%'; footL.style.top=C.my+'%';
+  footR.style.left=C.rx+'%'; footR.style.top=C.my+'%';
+  footL.className='foot'; footR.className='foot';
+  [...countsEl.children].forEach(c=>c.classList.remove('on'));
+  cueEl.textContent='Press start';
+}
+function tick(){
+  const c=ctx(), spb=60/BPM;
+  while(nextT < c.currentTime+0.12){
+    const f=STEPS[stepKey].frames[beat];
+    if(OPT.click) click(nextT, beat===3||beat===7);
+    const delay=Math.max(0,(nextT-c.currentTime)*1000);
+    const b=beat, frame=f;
+    setTimeout(()=>{ if(!playing) return; place(frame,b);
+      if(OPT.voice) say(frame.tap ? 'tap' : String(b%4+1)); }, delay);
+    nextT+=spb; beat=(beat+1)%8;
+  }
+}
+function start(){
+  if(playing) return;
+  unlock(); playing=true; beat=0; nextT=ctx().currentTime+0.15;
+  goBtn.textContent='■  Stop'; goBtn.classList.add('stop');
+  timer=setInterval(tick,25);
+}
+function stop(){
+  playing=false; if(timer){clearInterval(timer); timer=null;}
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  goBtn.textContent='▶  Start'; goBtn.classList.remove('stop');
+  reset();
+}
+goBtn.addEventListener('click',()=>playing?stop():start());
+document.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',()=>{
+  document.querySelectorAll('.pill').forEach(x=>x.classList.remove('sel'));
+  p.classList.add('sel'); stepKey=p.dataset.step;
+  if(playing){ stop(); start(); } else reset();
+}));
+document.querySelectorAll('.tg').forEach(t=>t.addEventListener('click',()=>{
+  t.classList.toggle('on'); OPT[t.dataset.opt]=t.classList.contains('on');
+  if(!OPT.voice && window.speechSynthesis) speechSynthesis.cancel();
+}));
+bpmEl.addEventListener('input',()=>{ BPM=+bpmEl.value; bpmv.textContent=bpmEl.value; });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden && playing) stop(); });
+reset();
+</script>
+</body>
+</html>
