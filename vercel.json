@@ -1,5 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.bachatamusicalidad.com" }],
+      "destination": "https://bachatamusicalidad.com/:path*",
+      "permanent": true
+    }
+  ]
 }

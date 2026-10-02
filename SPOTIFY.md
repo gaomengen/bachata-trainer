@@ -205,7 +205,7 @@ Nothing here is wired up yet — `index.html` is still fully self-contained with
 calls. If you build it:
 
 - **Production redirect URI** — register exactly
-  `https://bachata-app-ashy.vercel.app/`. It's https, so `crypto.subtle` is available.
+  `https://bachatamusicalidad.com/`. It's https, so `crypto.subtle` is available.
   If the deployment URL ever changes, the registered URI must change with it.
 - **Local dev** — the QA flow in this repo serves on `http://localhost:8765`, which Spotify
   **rejects**. Use `http://127.0.0.1:8765` instead and register that too. Same server,
