@@ -130,6 +130,8 @@
       <div class="pill sel" data-step="side">Side basic</div>
       <div class="pill" data-step="fwd">Forward &amp; back</div>
       <div class="pill" data-step="box">Box step</div>
+      <div class="pill" data-step="boxdiag1">Box · diagonal entry</div>
+      <div class="pill" data-step="boxdiag">Box · all diagonal</div>
     </div>
 
     <div class="counts" id="counts"></div>
@@ -191,6 +193,21 @@
     <p class="note" style="margin-top:8px">Teachers vary on the box — some travel forward on
       1–4 and sideways on 5–8, some square it off differently. Any version that keeps three
       steps and a tap per four counts is doing the job.</p>
+
+    <h3 style="color:var(--mambo)">3b · Box step with a diagonal lead</h3>
+    <p class="sub" style="margin-bottom:4px">Same box, but the leader's first step goes
+      <b>diagonally forward-left</b> instead of straight to the side. Your frame moves into
+      the follow, so they feel themselves sent diagonally back on count 1 and know a box is
+      coming, instead of finding out on 5. It also cuts the corner, so the box takes less
+      room on a busy floor.</p>
+    <ol class="steps">
+      <li><b>Diagonal entry</b> — step diagonally on 1 only, then finish as a regular box.
+        Once the follow has read it, you don't need to keep signalling.</li>
+      <li><b>All diagonal</b> — turn the whole box 45°: the side half runs on one
+        diagonal, the forward-and-back half on the other.</li>
+    </ol>
+    <p class="note" style="margin-top:8px">The lead comes from your chest and frame moving
+      forward, not your arms. If your arms do the pushing, it feels like a shove.</p>
 
     <div class="warn">
       <b>The three things beginners get wrong:</b><br>
@@ -330,6 +347,32 @@ const STEPS={
       {L:[8,14], R:[27,14],act:'R',cue:'right joins forward'},
       {L:[8,44], R:[27,14],act:'L',cue:'left steps back'},
       {L:[8,44], R:[19,44],act:'R',tap:1,cue:'TAP — square closed'}
+    ]
+  },
+  boxdiag1:{
+    name:'Box · diagonal entry',
+    frames:[
+      {L:[22,30],R:[53,44],act:'L',cue:'left steps DIAGONAL — frame leads'},
+      {L:[22,30],R:[43,30],act:'R',cue:'right closes'},
+      {L:[8,30], R:[43,30],act:'L',cue:'left steps left'},
+      {L:[8,30], R:[29,30],act:'R',tap:1,cue:'TAP — they know it\'s a box'},
+      {L:[8,4],  R:[29,30],act:'L',cue:'left steps FORWARD'},
+      {L:[8,4],  R:[29,4], act:'R',cue:'right joins forward'},
+      {L:[8,30], R:[29,4], act:'L',cue:'left steps back'},
+      {L:[8,30], R:[29,30],act:'R',tap:1,cue:'TAP — square closed'}
+    ]
+  },
+  boxdiag:{
+    name:'Box · all diagonal',
+    frames:[
+      {L:[22,30],R:[53,44],act:'L',cue:'left steps DIAGONAL forward-left'},
+      {L:[22,30],R:[43,30],act:'R',cue:'right closes'},
+      {L:[10,16],R:[43,30],act:'L',cue:'left on the diagonal again'},
+      {L:[10,16],R:[31,16],act:'R',tap:1,cue:'TAP — corner one'},
+      {L:[18,0], R:[31,16],act:'L',cue:'left steps diagonal FORWARD-right'},
+      {L:[18,0], R:[39,0], act:'R',cue:'right joins'},
+      {L:[10,16],R:[39,0], act:'L',cue:'left steps diagonal back'},
+      {L:[10,16],R:[31,16],act:'R',tap:1,cue:'TAP — square closed'}
     ]
   }
 };
