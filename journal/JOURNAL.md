@@ -15,6 +15,35 @@ Each entry has:
 
 ---
 
+## 2026-10-07 · Stepping technique: soft knees, foot first, hip follows
+
+**Source:** class (things instructors have said)
+
+**What I heard**
+- Don't stomp the ground when you step.
+- Keep your knees bent and your upper body straight.
+- "Lead with your foot and your hip follows." Something about leading with the head.
+- I haven't figured out yet how these fit together.
+
+**Why it works**
+- **Soft knees** absorb each step, so you land quietly instead of stomping, and keep
+  your height level (no bobbing).
+- **A quiet, tall upper body** is what your partner connects to.
+- **The order of a step:** (1) the foot reaches and lands lightly on the ball of the
+  foot, with no weight yet; (2) then your weight and hips move over it; (3) the hip
+  movement comes from the knees: the weighted leg straightens a little and the other
+  softens, which tilts the hip by itself. Don't push the hip.
+- **"Lead with the head" probably means posture.** The head stays level and over the
+  body; throwing it forward pulls you off balance. Partner leading comes from the
+  centre or chest (same idea as the diagonal box lead).
+
+**Try next**
+- Slow side basic: place the foot with no weight, pause, then move the weight over it
+  and feel which knee straightens. The hip should move without being pushed.
+- Ask my instructor what they mean by "lead with your head".
+
+---
+
 ## 2026-10-07 · Diagonal lead into the box step
 
 **Source:** class

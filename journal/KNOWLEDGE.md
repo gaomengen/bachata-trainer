@@ -11,6 +11,15 @@ refines a point, the point gets updated, not duplicated.
   A change of direction in the leader's first step is a clear, early signal.
   *(2026-10-07)*
 
+## Body & technique
+- **Soft knees, quiet upper body.** Bent knees absorb each step so you don't stomp and
+  your height stays level; the upper body stays tall and still. *(2026-10-07)*
+- **Foot first, weight follows.** The foot lands lightly on the ball of the foot, then the
+  weight moves over it. *(2026-10-07)*
+- **The hip comes from the knees.** When the weighted leg straightens a little and the
+  other softens, the hip tilts by itself. Don't push it. *(2026-10-07)*
+- **Head level and over the body**, not leading forward. *(2026-10-07)*
+
 ## Steps & patterns
 ### Box step
 - **Diagonal entry:** step diagonally forward-left on 1, then finish the regular box.
@@ -30,6 +39,8 @@ refines a point, the point gets updated, not duplicated.
   *(2026-10-07)*
 
 ## Open questions
+- What does my instructor mean by "lead with your head"? Posture, or something else?
+  *(2026-10-07)*
 - In the all-diagonal box, which diagonal does the forward-and-back half use? Check in
   class. *(2026-10-07)*
 
