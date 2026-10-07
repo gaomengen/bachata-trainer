@@ -15,6 +15,39 @@ Each entry has:
 
 ---
 
+## 2026-10-07 · Counting the "and"
+
+**Source:** class (how people count)
+
+**What I learned**
+- Normal counting is 1, 2, 3, 4. Some people add "and": "1 and 2, 3, 4", or
+  "1, 2, 3 and 4".
+- Adding the "and" makes my steps easier. I don't have to think about it; if I follow
+  the "and", the next move comes naturally and becomes muscle memory.
+- My understanding: the "and" is like a syncopated note.
+
+**Why it works**
+- The **"and" is the half-beat between numbers** (1 & 2 & 3 & 4). Counting it on every
+  beat doesn't add steps; it fills the gaps so I feel the time in between
+  (**subdivision**).
+- The "and" is where I **prepare**: weight shifts, knee softens, foot starts moving.
+  Then the step lands right on the number. It also stops me rushing, especially the
+  tap.
+- In the music, that in-between pulse is mostly the **güira** (the metal scraper,
+  "ch-ch-ch").
+- **Syncopation** is different: an actual step on an "and" that normally has none.
+  The classic one replaces the tap with two quick steps: **"3 & 4"** = step, step,
+  step instead of step, tap. "1, 2, 3 and 4" is that shape.
+- Subdivision is the timing tool; syncopation is the move. The first makes the
+  second easy.
+
+**Try next**
+- Count "1 & 2 & 3 & 4" out loud through a whole song with the basic, no extra steps.
+- Then try the "3 & 4" syncopation in place of the tap.
+- Listen for the güira and notice the "and" without counting.
+
+---
+
 ## 2026-10-07 · Stepping technique: soft knees, foot first, hip follows
 
 **Source:** class (things instructors have said)

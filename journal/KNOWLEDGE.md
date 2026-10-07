@@ -29,7 +29,15 @@ refines a point, the point gets updated, not duplicated.
 - The diagonal makes the box smaller, which helps on a crowded floor. *(2026-10-07)*
 
 ## Musicality
-*(nothing yet)*
+- **The "and" is the half-beat between numbers:** 1 & 2 & 3 & 4. Counting it
+  (subdivision) helps me feel the time between steps, prepare on the "&", and land
+  on the number without rushing. *(2026-10-07)*
+- **The güira plays the "and"**: the "ch-ch-ch" of the metal scraper fills the
+  half-beats. *(2026-10-07)*
+- **Syncopation = a step on an "and" that's normally empty.** Classic bachata version:
+  "3 & 4" replaces the tap with two quick steps. *(2026-10-07)*
+- Counting builds muscle memory; later the count fades and you just hear the music.
+  *(2026-10-07)*
 
 ## Styling
 *(nothing yet)*
@@ -45,5 +53,7 @@ refines a point, the point gets updated, not duplicated.
   class. *(2026-10-07)*
 
 ## Article ideas
+- **"Count the and":** how subdividing the beat makes steps easier and opens up
+  syncopation. *(2026-10-07)*
 - **"Lead the box step from count 1":** why the diagonal entry tells the follow what's
   coming. *(2026-10-07)*
