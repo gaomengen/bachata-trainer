@@ -15,6 +15,42 @@ Each entry has:
 
 ---
 
+## 2026-10-08 · What is "your weight"? The hip delay
+
+**Source:** TikTok video on hip movement, plus my own thinking
+
+**What I learned**
+- The video says the hip moves *delayed*: the torso moves toward where you're going
+  first, and the hip follows slightly behind.
+- That made me ask what "weight" means in "weight transfer". Torso? Hip? Leg? Whole
+  body?
+- My answer: in bachata, your weight is your **hip**. Side basic left: the leg and the
+  torso go first; they're the instruments that move the weight. Once they're in
+  position, the weight, meaning the hip, transfers onto the left foot.
+- This feels so right, but I wasn't sure it's actually right.
+
+**Why it works**
+- In physics, your weight acts at your **centre of mass**, which for a standing person
+  sits low in the pelvis, just below the navel. So "weight = hip" is close to
+  literally true. **Weight transfer = moving the pelvis from over one foot to over the
+  other.**
+- The sequence: (1) the foot reaches, no weight; (2) the torso starts moving, which is
+  the lead my partner feels; (3) the hip arrives last and settles over the foot, which
+  is the actual transfer.
+- The "delay" is the gap between torso and hip, and that lag is what makes the hip
+  motion visible. As the hip settles, that leg straightens a little and the hip tilts
+  out on its own (same as the knee point from 2026-10-07).
+- **Watch out:** "torso first" doesn't mean leaning. The torso travels as an upright
+  unit, sliding a few centimetres, with no bending at the waist. Leaning puts the
+  weight ahead of the foot and costs balance.
+
+**Try next**
+- Slow test: stop with the torso over the left foot but the hip not yet there. If I'm
+  still balanced on the right leg, the delay is under control.
+- Check in the mirror that the shoulders stay level while the torso moves.
+
+---
+
 ## 2026-10-07 · Counting the "and"
 
 **Source:** class (how people count)

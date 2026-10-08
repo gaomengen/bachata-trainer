@@ -14,8 +14,14 @@ refines a point, the point gets updated, not duplicated.
 ## Body & technique
 - **Soft knees, quiet upper body.** Bent knees absorb each step so you don't stomp and
   your height stays level; the upper body stays tall and still. *(2026-10-07)*
-- **Foot first, weight follows.** The foot lands lightly on the ball of the foot, then the
-  weight moves over it. *(2026-10-07)*
+- **"Your weight" = your hip.** Your centre of mass sits low in the pelvis, so weight
+  transfer means moving the pelvis from over one foot to over the other.
+  *(2026-10-08)*
+- **Foot, then torso, then hip.** The foot lands lightly on the ball of the foot with
+  no weight; the torso starts moving (that's the lead); the hip arrives last and
+  settles over the foot (that's the transfer). *(2026-10-07, refined 2026-10-08)*
+- **The hip delay** is the gap between torso and hip, and it's what makes the hip
+  movement visible. The torso moves upright, as a unit; never lean. *(2026-10-08)*
 - **The hip comes from the knees.** When the weighted leg straightens a little and the
   other softens, the hip tilts by itself. Don't push it. *(2026-10-07)*
 - **Head level and over the body**, not leading forward. *(2026-10-07)*
@@ -53,6 +59,8 @@ refines a point, the point gets updated, not duplicated.
   class. *(2026-10-07)*
 
 ## Article ideas
+- **"What is your weight?":** weight transfer explained as moving your centre of mass
+  (the pelvis), and why the hip arrives last. *(2026-10-08)*
 - **"Count the and":** how subdividing the beat makes steps easier and opens up
   syncopation. *(2026-10-07)*
 - **"Lead the box step from count 1":** why the diagonal entry tells the follow what's
