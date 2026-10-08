@@ -23,6 +23,12 @@ refines a point, the point gets updated, not duplicated.
   settles over the foot (that's the transfer). *(2026-10-07, refined 2026-10-08)*
 - **The hip delay** is the gap between torso and hip, and it's what makes the hip
   movement visible. The torso moves upright, as a unit; never lean. *(2026-10-08)*
+- **The delay gives drive.** While the hip is still over the standing leg, that leg is
+  loaded and can push you into the step. Hip-first means nothing to push with.
+  *(2026-10-08)*
+- **Torso-first keeps you upright.** Leading with the hip leaves the upper body behind
+  and bends you into a "C"; leading with torso and foot ends with shoulders, hip and
+  foot stacked. *(2026-10-08)*
 - **The hip comes from the knees.** When the weighted leg straightens a little and the
   other softens, the hip tilts by itself. Don't push it. *(2026-10-07)*
 - **Head level and over the body**, not leading forward. *(2026-10-07)*

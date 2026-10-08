@@ -15,6 +15,31 @@ Each entry has:
 
 ---
 
+## 2026-10-08 · Drive from the standing leg, and why torso-first keeps me upright
+
+**Source:** practice (trying out the hip delay)
+
+**What I realized**
+- If I leave my centre of weight (hip) behind when I move, I get **thrust**. Moving
+  left with the hip still back, I get more drive from my right leg.
+- Moving the torso and foot slightly ahead of the hip **doesn't contradict** staying
+  straight and upright. When I tried it, it actually **helped** me stay upright.
+
+**Why it works**
+- **Drive:** a leg can only push against the floor while it's carrying weight. With
+  the hip still over the right leg, that leg is loaded and pushes me left. If the hip
+  went first, the right leg would be empty and I'd be falling into the step instead
+  of pushing into it. The hip delay looks good *and* powers the step.
+- **Uprightness:** if the hip led, the upper body would get left behind and tilt away,
+  bending me into a "C". With the torso moving along with the foot and the hip
+  settling in underneath, everything ends up stacked: shoulders over hip over foot.
+
+**Try next**
+- Feel the push from the standing leg on every step of the side basic.
+- Compare in the mirror: hip-first versus torso-first, and watch the shoulders.
+
+---
+
 ## 2026-10-08 · What is "your weight"? The hip delay
 
 **Source:** TikTok video on hip movement, plus my own thinking
