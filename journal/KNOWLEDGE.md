@@ -13,7 +13,8 @@ refines a point, the point gets updated, not duplicated.
 
 ## Body & technique
 - **Soft knees, quiet upper body.** Bent knees absorb each step so you don't stomp and
-  your height stays level; the upper body stays tall and still. *(2026-10-07)*
+  your height stays level; the upper body stays tall and quiet (it travels with the
+  step but doesn't lean or twist). *(2026-10-07, refined 2026-10-08)*
 - **"Your weight" = your hip.** Your centre of mass sits low in the pelvis, so weight
   transfer means moving the pelvis from over one foot to over the other.
   *(2026-10-08)*
