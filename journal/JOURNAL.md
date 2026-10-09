@@ -15,6 +15,30 @@ Each entry has:
 
 ---
 
+## 2026-10-08 · The most common beginner mistake: missing the tap
+
+**Source:** my own observation
+
+**What I noticed**
+- One of the easiest mistakes beginners make is missing a count, usually the tap.
+
+**Why it happens**
+- **The tap carries no weight.** Counts 1, 2 and 3 each move the weight, so the body
+  feels them as steps. The tap doesn't, so the body skips it and goes straight into
+  the next 1. The 4-count becomes a 3-count and drifts off the music.
+- **The rush.** After three steps the body wants to keep walking; holding a beat where
+  nothing moves feels unnatural at first.
+- **The opposite mistake:** stepping *down* on the tap. Then the wrong foot is free
+  and the next basic starts on the wrong side. The tap is a touch, not a step.
+
+**Fixes**
+- Give the tap a job: it's when the hip settles and pops (see the hip delay entries),
+  so the beat feels full, not empty.
+- Count "1, 2, 3, **tap**" out loud instead of "4".
+- Use the "and": "3, 4 &, 1". The "&" holds me in place so I don't start 1 early.
+
+---
+
 ## 2026-10-08 · Drive from the standing leg, and why torso-first keeps me upright
 
 **Source:** practice (trying out the hip delay)

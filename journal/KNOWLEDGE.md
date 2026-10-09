@@ -34,6 +34,14 @@ refines a point, the point gets updated, not duplicated.
 - **Head level and over the body**, not leading forward. *(2026-10-07)*
 
 ## Steps & patterns
+### The tap (count 4 and 8)
+- **Most common beginner mistake: missing the tap.** It carries no weight, so the body
+  doesn't feel it and rushes into the next 1. *(2026-10-08)*
+- **The opposite mistake: weighting the tap.** The tap is a touch; the tapping foot
+  has to stay free because it moves next. *(2026-10-08)*
+- **Fixes:** give the tap a job (the hip settles and pops), say "tap" out loud
+  instead of "4", count "4 &" to hold the gap. *(2026-10-08)*
+
 ### Box step
 - **Diagonal entry:** step diagonally forward-left on 1, then finish the regular box.
   The follow reads it straight away. *(2026-10-07)*
@@ -66,6 +74,8 @@ refines a point, the point gets updated, not duplicated.
   class. *(2026-10-07)*
 
 ## Article ideas
+- **"Don't skip the tap":** why the weightless beat is the one everyone misses, and how
+  to make it feel full. *(2026-10-08)*
 - **"What is your weight?":** weight transfer explained as moving your centre of mass
   (the pelvis), and why the hip arrives last. *(2026-10-08)*
 - **"Count the and":** how subdividing the beat makes steps easier and opens up
