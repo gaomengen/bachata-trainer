@@ -15,6 +15,32 @@ Each entry has:
 
 ---
 
+## 2026-10-08 · There's no fast track
+
+**Source:** my own realization (from practising with class clips)
+
+**What I realized**
+- There's no fast track and no shortcut. You have to go through it and keep
+  practising.
+- Record clips from class and go over them again and again until I start to feel
+  confident enough to pick it up and practise well.
+- Next up: the choreography clip from this week's **Level Up performance series**.
+  Goal: memorise the choreography and practise it as naturally as I can.
+
+**Why it works**
+- Understanding a technique (like the hip delay) helps, but only repetition puts it in
+  the body. Class clips are the best material: my teacher, my level, the exact steps.
+- "Natural" comes after memorising. Once I don't have to think about what's next, I
+  can work on how it looks and feels.
+
+**Try next (for the choreography)**
+- Learn it one 8-count at a time; practise the joins between 8-counts on their own.
+- Watch, then dance it **without** the video to test what I actually remember.
+- Slow first, then up to tempo.
+- Film myself and compare side by side with the class clip.
+
+---
+
 ## 2026-10-08 · The most common beginner mistake: missing the tap
 
 **Source:** my own observation

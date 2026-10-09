@@ -49,6 +49,14 @@ refines a point, the point gets updated, not duplicated.
   *(2026-10-07)*
 - The diagonal makes the box smaller, which helps on a crowded floor. *(2026-10-07)*
 
+## Practice & learning
+- **There's no fast track.** Understanding helps, but only repetition builds it into
+  the body. *(2026-10-08)*
+- **Rewatch class clips** again and again until I feel confident. *(2026-10-08)*
+- **Learning choreography:** one 8-count at a time, drill the joins, dance it without
+  the video, slow then up to tempo, film and compare. Natural comes after
+  memorised. *(2026-10-08)*
+
 ## Musicality
 - **The "and" is the half-beat between numbers:** 1 & 2 & 3 & 4. Counting it
   (subdivision) helps me feel the time between steps, prepare on the "&", and land
