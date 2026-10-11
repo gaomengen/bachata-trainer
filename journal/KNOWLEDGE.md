@@ -49,6 +49,14 @@ refines a point, the point gets updated, not duplicated.
   *(2026-10-07)*
 - The diagonal makes the box smaller, which helps on a crowded floor. *(2026-10-07)*
 
+### Patterns & sides
+- **Many partner patterns are done on one side only.** The hold is asymmetric, so a
+  mirror is really a different pattern; social dancing relies on everyone knowing the
+  standard version. *(2026-10-11)*
+- **Both sides:** the basics, right and left turns, and solo turns/styling (to keep
+  my body balanced). *(2026-10-11)*
+- Learn patterns as taught first; mirror later for variety. *(2026-10-11)*
+
 ## Practice & learning
 - **There's no fast track.** Understanding helps, but only repetition builds it into
   the body. *(2026-10-08)*
@@ -87,6 +95,7 @@ refines a point, the point gets updated, not duplicated.
   *(2026-10-07)*
 
 ## Open questions
+- Which side is the hammerlock usually done on in my scene, and why? *(2026-10-11)*
 - What does my instructor mean by "lead with your head"? Posture, or something else?
   *(2026-10-07)*
 - In the all-diagonal box, which diagonal does the forward-and-back half use? Check in

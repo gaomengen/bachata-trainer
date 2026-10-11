@@ -15,6 +15,38 @@ Each entry has:
 
 ---
 
+## 2026-10-11 · Some patterns are only done on one side
+
+**Source:** my own observation from classes
+
+**What I noticed**
+- When I started, I assumed that if you learn a move on one side (a hammerlock, a right
+  or left turn), you have to learn it on the other side too.
+- But most people don't. Some patterns are commonly done on one side only. The
+  hammerlock, maybe locking on the follow's right side?
+- In class I expected the instructor to tell us to practise the other side too, but it
+  never came. So maybe some patterns are just one side, and that's it.
+
+**Why it works**
+- **The hold isn't symmetrical:** leader's left hand holds the follow's right hand,
+  leader's right arm on the follow's back. Patterns start from that hold, so the
+  mirror needs a different hand connection and a different way in; it's really a
+  separate pattern.
+- **Social dancing runs on shared habits.** Everyone learns the standard version, so a
+  follow recognises it from the first touch, even with a stranger. A mirrored version
+  is harder to lead clearly.
+- **Patterns join up:** the standard version ends somewhere that leads easily into the
+  next common move.
+- **Class time:** better to nail the version you'll actually use.
+- **What does go both ways:** the basics, **turns** (right and left are both common),
+  and my own body: practise turns and styling on both sides to stay balanced.
+
+**Try next**
+- Ask in class: which side is the hammerlock usually done on, and why?
+- Practise solo turns in both directions.
+
+---
+
 ## 2026-10-10 · Texture, and my "syncopation reserve"
 
 **Source:** Chelsea's intermediate class, plus hours of listening to bachata over the
