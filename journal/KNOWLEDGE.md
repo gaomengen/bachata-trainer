@@ -67,6 +67,17 @@ refines a point, the point gets updated, not duplicated.
   "3 & 4" replaces the tap with two quick steps. *(2026-10-07)*
 - Counting builds muscle memory; later the count fades and you just hear the music.
   *(2026-10-07)*
+- **Texture:** varying the steps instead of hitting every count evenly: step weight
+  ("dun dun toe"), double steps, holds, slides, accents. *(2026-10-10)*
+- **Texture follows musical accents.** Syncopation is the most common trigger; also
+  breaks and stops (hold), the mambo section (bigger, busier), and strong hits on the
+  beat. *(2026-10-10)*
+- **Bachata comes in phrases of eight counts, usually four eights at a time.** Fills
+  and builds tend to come at the end of a phrase, so changes can be predicted even
+  in an unfamiliar song. *(2026-10-10)*
+- **My "syncopation reserve" (vocabulary):** drilled textures ready to use when the
+  music offers a moment. Drill them until automatic; save them for the moments, since
+  texture works by contrast with the plain basic. *(2026-10-10)*
 
 ## Styling
 *(nothing yet)*
@@ -82,6 +93,8 @@ refines a point, the point gets updated, not duplicated.
   class. *(2026-10-07)*
 
 ## Article ideas
+- **"Your syncopation reserve":** how to hear accents coming in a song you don't know,
+  and keep textures ready for them. *(2026-10-10)*
 - **"Don't skip the tap":** why the weightless beat is the one everyone misses, and how
   to make it feel full. *(2026-10-08)*
 - **"What is your weight?":** weight transfer explained as moving your centre of mass

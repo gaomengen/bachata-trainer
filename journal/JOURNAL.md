@@ -15,6 +15,48 @@ Each entry has:
 
 ---
 
+## 2026-10-10 · Texture, and my "syncopation reserve"
+
+**Source:** Chelsea's intermediate class, plus hours of listening to bachata over the
+last two days
+
+**What I learned**
+- **Texture:** instead of hitting every step of the basic evenly, vary them. Like
+  "dun dun toe", or sometimes two steps in one beat. It really adds texture.
+- From listening a lot, I realized how important **syncopation** is in bachata music.
+  Connecting the two: almost every time there's texture in the steps, there's
+  syncopation in the music.
+- My own term: a **"syncopation reserve"**. If I understand music well enough, even an
+  unfamiliar song, I can feel the build-up to a syncopation, and in that moment I pull
+  something from my reserve and move my steps differently. That syncs steps and music
+  much better than a bland basic.
+- Not sure it's 100% correct; this is my understanding right now.
+
+**Why it works (and the refinement)**
+- Texture matches the music: dancers change their footwork when the music changes.
+  Bachata is full of syncopation (bongo, guitar), so it's often the trigger.
+- **Predicting it in unfamiliar songs** works because bachata is built in phrases of
+  eight counts, usually four eights at a time. Fills and builds tend to come at the
+  end of a phrase, just before something new starts. Listening a lot trains this.
+- **Refinement:** syncopation is the most common trigger, not the only one. Texture
+  follows **musical accents** in general:
+  - **breaks and stops:** the music drops out, so pause or hold;
+  - **section changes:** into the **mambo** (high-energy instrumental section, busy
+    guitar, the bongo switches to cowbell), so steps get bigger or busier;
+  - **hits on the beat:** a strong guitar or vocal accent can deserve a sharper step.
+- Dancers usually call the reserve **vocabulary**. Two rules keep it working:
+  1. **Drill it until it's automatic.** There's no time to think in the moment ("no
+     fast track").
+  2. **Contrast.** Plain basics are the background; texture stands out because it's
+     saved for moments the music marks. Texture on every count cancels itself out.
+
+**Try next**
+- Pick 2–3 textures (double step, "dun dun toe", a hold) and drill each until automatic.
+- Play a song I don't know and call out the end of each phrase before it arrives.
+- Listen for breaks and the move into the mambo, and use a texture there.
+
+---
+
 ## 2026-10-08 · There's no fast track
 
 **Source:** my own realization (from practising with class clips)
