@@ -65,6 +65,11 @@ refines a point, the point gets updated, not duplicated.
   the video, slow then up to tempo, film and compare. Natural comes after
   memorised. *(2026-10-08)*
 
+- **A home practice plan takes the dread out of socials.** Knowing what I'm working on
+  turns a social from a test into practice. *(2026-10-12)*
+- **Film a baseline, then compare.** Progress is easier to see on video than to feel.
+  *(2026-10-12)*
+
 ## Musicality
 - **The "and" is the half-beat between numbers:** 1 & 2 & 3 & 4. Counting it
   (subdivision) helps me feel the time between steps, prepare on the "&", and land

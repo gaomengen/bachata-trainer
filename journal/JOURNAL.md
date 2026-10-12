@@ -15,6 +15,32 @@ Each entry has:
 
 ---
 
+## 2026-10-12 · LA, week 1 of 4: wrapped up
+
+**Source:** weekly review
+
+**The week**
+| | Count |
+|---|---|
+| Salsa classes | 2 (beginner + intermediate, 2 hrs) |
+| Bachata classes | 5 (Level Up performance series + 4 at Bachata Dance Academy) |
+| Socials | 2 (Wednesday + Sunday, bachata) |
+| Home practice | ~2 hrs on Thu, Fri, Sat, plus other days |
+
+**How it feels**
+- I think I'll get decent momentum from this.
+- Going to socials doesn't feel like a dread anymore.
+- I have a plan for practising at home, so I don't feel clueless anymore.
+- Three weeks left. Can't wait to see where I am at the end of the month.
+
+**Next week**
+- Film a baseline: a minute of basics with some texture, plus the Level Up
+  choreography so far. Film the same at the end of the month and compare.
+- Plan at least one easy day (just listening to music) so it sinks in and my knees
+  and calves get a break.
+
+---
+
 ## 2026-10-11 · Some patterns are only done on one side
 
 **Source:** my own observation from classes
