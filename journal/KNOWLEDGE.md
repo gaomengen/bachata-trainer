@@ -10,6 +10,11 @@ refines a point, the point gets updated, not duplicated.
 - **Signal early.** The follow needs to know what's coming on count 1, not count 5.
   A change of direction in the leader's first step is a clear, early signal.
   *(2026-10-07)*
+- **The leader is responsible for the follow's safety.** You invited them, so: no
+  grabbing or yanking, and never lead them into other dancers. Watch the floor behind
+  your follow, since they're the one moving backward. *(2026-10-13)*
+- **Trust is built through the connection.** The eyes-closed drill shows the follow
+  can dance from the connection alone when the lead is clear. *(2026-10-13)*
 
 ## Body & technique
 - **Soft knees, quiet upper body.** Bent knees absorb each step so you don't stomp and
@@ -99,6 +104,12 @@ refines a point, the point gets updated, not duplicated.
 - A smaller box (from the diagonal entry) takes up less room on a busy floor.
   *(2026-10-07)*
 
+## Teaching ideas
+- **Eyes-closed trust drill.** Pairs in a circle; the follow's hands on the lead's chest,
+  eyes closed; the lead follows the instructor's signals: forward, back, hold.
+  Variations: eyes open first, add side steps and the basic, add music, swap roles,
+  ask follows for feedback. *(2026-10-13)*
+
 ## Open questions
 - Which side is the hammerlock usually done on in my scene, and why? *(2026-10-11)*
 - What does my instructor mean by "lead with your head"? Posture, or something else?
@@ -107,6 +118,8 @@ refines a point, the point gets updated, not duplicated.
   class. *(2026-10-07)*
 
 ## Article ideas
+- **"The leader's first job is safety":** why the invitation makes you responsible,
+  and what that looks like on a crowded floor. *(2026-10-13)*
 - **"Your syncopation reserve":** how to hear accents coming in a song you don't know,
   and keep textures ready for them. *(2026-10-10)*
 - **"Don't skip the tap":** why the weightless beat is the one everyone misses, and how

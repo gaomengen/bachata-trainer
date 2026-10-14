@@ -15,6 +15,43 @@ Each entry has:
 
 ---
 
+## 2026-10-13 · Eyes-closed trust drill, and the leader's responsibility
+
+**Source:** class (last night). A teaching method I want to keep in case I teach
+someday.
+
+**The drill**
+- Lead and follow face each other; all the pairs form a circle.
+- The follow puts their hands on the lead's chest, firm, so the two make a solid
+  connection. The follow **closes their eyes**.
+- The lead watches the instructor's hand signals: **forward, back, hold**. Wave
+  forward and the lead moves forward; wave back and they move back.
+- It teaches a lot about how partners work together, and about trust.
+
+**What stuck with me**
+- The leader is the one who invites the follow to dance, so the leader is responsible
+  for them: not only their movement but their **safety**. Never grab their hand.
+  Never lead them into other people or a collision. Make sure they're safe with you.
+
+**Why it works**
+- With eyes closed, the follow can only use the connection; they can't watch and
+  guess. That's why it builds trust fast.
+- The contact is on the chest, so the leader has to lead with their body, not their
+  arms (same as the diagonal box lead).
+- The signals come without warning, so the leader has to react and commit cleanly:
+  forward, back or hold, nothing half-way.
+- The circle puts pairs close together, so the leader has to watch the floor, which is
+  the safety point in practice.
+
+**Variations if I teach it**
+- Follow's eyes open first, then closed.
+- Add side steps, then the basic with a tap.
+- Put music on: move on the beat, not just on signals.
+- Swap roles, so leaders feel what being led blind is like.
+- Ask follows afterwards which leads felt clear and which felt like pushing.
+
+---
+
 ## 2026-10-12 · LA, week 1 of 4: wrapped up
 
 **Source:** weekly review
