@@ -75,6 +75,17 @@ refines a point, the point gets updated, not duplicated.
 - **Film a baseline, then compare.** Progress is easier to see on video than to feel.
   *(2026-10-12)*
 
+- **Class is recognition; a social is recall.** Under pressure you only have what's
+  automatic. Drill until a pattern needs no recording, like vocabulary in a language:
+  you don't talk with a dictionary. *(2026-10-14)*
+- **Keep a vocabulary list:** every pattern named, with a one-line cue; practise from
+  the name, not the video. *(2026-10-14)*
+- **Full-song shadow dancing** with an imaginary partner, returning to the basic
+  between patterns. Moves first, then practise the lead as part of each move.
+  *(2026-10-14)*
+- **Solid basics speed up learning:** when the basics are automatic, attention is free
+  for new patterns. *(2026-10-14)*
+
 ## Musicality
 - **The "and" is the half-beat between numbers:** 1 & 2 & 3 & 4. Counting it
   (subdivision) helps me feel the time between steps, prepare on the "&", and land
@@ -104,6 +115,13 @@ refines a point, the point gets updated, not duplicated.
 - A smaller box (from the diagonal entry) takes up less room on a busy floor.
   *(2026-10-07)*
 
+- **Find the beat with the basic first.** Dance 8–16 counts of basic until you and your
+  partner are together on the music, then add patterns. Lost mid-song? Go back to the
+  basic and find the 1. *(2026-10-14)*
+- **When your head is busy choosing moves, timing goes first.** *(2026-10-14)*
+- Some LA classes have 6–8 leads per follow; ask early and make each dance count.
+  *(2026-10-14)*
+
 ## Teaching ideas
 - **Eyes-closed trust drill.** Pairs in a circle; the follow's hands on the lead's chest,
   eyes closed; the lead follows the instructor's signals: forward, back, hold.
@@ -118,6 +136,8 @@ refines a point, the point gets updated, not duplicated.
   class. *(2026-10-07)*
 
 ## Article ideas
+- **"From class to social":** why patterns vanish on the social floor (recognition vs
+  recall) and how to practise so they don't. *(2026-10-14)*
 - **"The leader's first job is safety":** why the invitation makes you responsible,
   and what that looks like on a crowded floor. *(2026-10-13)*
 - **"Your syncopation reserve":** how to hear accents coming in a song you don't know,

@@ -15,6 +15,66 @@ Each entry has:
 
 ---
 
+## 2026-10-14 · Class win, social defeat, and a plan
+
+**Source:** beginner + intermediate bachata class, then the Wednesday social
+
+**What happened**
+- Classes were very good. There were far more leads than follows, maybe 6–8 to 1.
+  I've never seen that before.
+- **Win:** I'm learning moves and patterns faster now. My basics (step, tap, where to
+  step) are solid, so I could even anticipate the instructor's next move.
+- **Social:** a defeat, not a failure, and that's okay. I danced only one song with
+  one partner. We weren't on beat the whole song and struggled the whole time. All I
+  could remember was left turn, right turn, cross body lead and box step. I tried
+  what I practised from the last class in close frame, and it didn't click. I could
+  have stayed longer but didn't. That can't continue; I don't have much time left in
+  LA.
+
+**My plan for the rest of the month**
+1. **Drill until I don't need the recordings.** Practise moves from class recordings
+   (and earlier classes, including ones from before LA) again and again, until I
+   can do them without thinking twice. Like a language: you don't talk to people
+   with a dictionary or a grammar book; you talk because you remember the right
+   words.
+2. **Full-song rehearsal.** Any bachata song, pretend I have a partner, and dance the
+   moves I've learned all the way through.
+3. **Moves first, communication later.** First goal: not having to think about the
+   moves. Next level: practise with an imaginary partner and think about how I
+   communicate with them.
+- On the dance floor you don't think about the move; you feel it, because you have
+  the vocabulary.
+- **Biggest takeaway:** I have a concrete plan and a clear path forward.
+
+**Why it went this way**
+- **Class is recognition; a social is recall.** In class the pattern is shown, you
+  repeat it with the same steps, and you know what's next. At a social you have to
+  choose, lead, keep time and read a stranger all at once. Under that load the brain
+  falls back to the most practised moves. That's normal under pressure, not
+  forgetting.
+- **Off beat the whole song:** when your head is busy choosing moves, timing goes
+  first. We probably never found the beat together at the start.
+- **Faster learning in class** is the foundation paying off: when the basics are
+  automatic, attention is free for new material.
+
+**Additions to the plan**
+- **Vocabulary list:** name every pattern I've learned, with a one-line cue each.
+  Practise by reading a name and doing the move without the video. If I can't, it
+  goes back on the drill pile.
+- **Return to the basic between patterns** in full-song practice, since every move
+  at a social starts and ends there.
+- **Find the beat with the basic first:** dance the first 8–16 counts as basic until
+  we're clearly together, then add patterns. If lost, go back to the basic and find
+  the 1.
+- **Practise the lead along with the move** (frame, prep, body), so it's not a
+  separate skill to add later.
+
+**Next social goal**
+- Stay longer, dance at least three songs, and aim for on beat with good basics plus
+  two patterns done cleanly. Ask early, since follows are scarce.
+
+---
+
 ## 2026-10-13 · Eyes-closed trust drill, and the leader's responsibility
 
 **Source:** class (last night). A teaching method I want to keep in case I teach
