@@ -114,7 +114,6 @@ refines a point, the point gets updated, not duplicated.
 ## Social dancing & floor craft
 - A smaller box (from the diagonal entry) takes up less room on a busy floor.
   *(2026-10-07)*
-
 - **Find the beat with the basic first.** Dance 8–16 counts of basic until you and your
   partner are together on the music, then add patterns. Lost mid-song? Go back to the
   basic and find the 1. *(2026-10-14)*
