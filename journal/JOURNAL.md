@@ -5,13 +5,51 @@ order I learned it. Newest entries at the top.
 
 How this works: I voice-journal what I learned, and Claude writes it up here as a dated
 entry, adds what it means and why it works, and files the lesson into
-[KNOWLEDGE.md](KNOWLEDGE.md), the organized master version.
+[KNOWLEDGE.md](KNOWLEDGE.md), the organized master version. Moves I know live in
+[VOCABULARY.md](VOCABULARY.md).
 
 Each entry has:
 - **Source**: class, social, YouTube, practice, or a conversation
 - **What I learned**: in my own words, cleaned up
 - **Why it works**: the understanding behind it
 - **Try next**: what to practice or check
+
+---
+
+## 2026-10-15 · Footwork at home, sensual at the socials
+
+**Source:** my own reflection after the Wednesday social
+
+**What I realized**
+- Everything I've practised from TikTok and other videos is **footwork**, which is
+  really **traditional (Dominican) bachata**. I love it: it looks cool, and you can do
+  it on your own.
+- The classes I'm taking now are **sensual bachata**: lots of turns and patterns, on
+  the shoulder, behind the head, double turns.
+- I want to be good at both. But I think I'll be happier dancing traditional: the
+  energy feels different, and it's more about your own expression through footwork.
+  Sensual feels more about connection with a partner (traditional can do that too).
+- The mismatch: I practise footwork at home, but the socials are sensual. Even the
+  music was different: remixed pop with a bachata touch.
+
+**Why it matters**
+- **Dominican (traditional) bachata:** footwork-heavy, grounded, playful, with lots of
+  solo expression inside the partnership. Music is traditional bachata: requinto
+  guitar, bongo, güira, bass, with the derecho/majao/mambo structure.
+- **Sensual bachata:** developed in Spain; body waves, turns, dips, head movement and a
+  close connection. Music is often slower **remixes of pop and R&B songs**. These have
+  pop structure (verse, chorus, big breaks) more than majao/mambo sections.
+- So the musicality cues I've been learning (the güira, the mambo) fit traditional
+  songs best; on remixes, listen for breaks, drops and builds instead.
+- **Footwork isn't wasted at a sensual social.** It builds grounding, timing and
+  texture, and the basic is shared. It just won't stand in for partner patterns.
+
+**Plan**
+- For the rest of the LA month, put **social practice time into sensual patterns**,
+  since that's what the socials dance (the vocabulary list).
+- Keep footwork as my joy and warm-up, and use it as texture in the basic.
+- Ask around for Dominican or traditional bachata nights in LA.
+- Started [VOCABULARY.md](VOCABULARY.md), grouped by style.
 
 ---
 

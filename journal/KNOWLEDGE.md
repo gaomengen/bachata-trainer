@@ -108,6 +108,18 @@ refines a point, the point gets updated, not duplicated.
   music offers a moment. Drill them until automatic; save them for the moments, since
   texture works by contrast with the plain basic. *(2026-10-10)*
 
+## Bachata styles
+- **Dominican / traditional:** footwork-heavy, grounded, playful, lots of solo
+  expression. Music: requinto guitar, bongo, güira, bass; derecho/majao/mambo
+  structure. The style I enjoy most. *(2026-10-15)*
+- **Sensual:** developed in Spain; body waves, turns, dips, head movement, close
+  connection. Music: often slower remixes of pop/R&B songs, with pop structure
+  (verse, chorus, breaks, drops). What the LA socials dance. *(2026-10-15)*
+- **Match practice to where I dance.** Footwork builds grounding and texture but
+  doesn't replace partner patterns at a sensual social. *(2026-10-15)*
+- On pop remixes, listen for breaks, drops and builds rather than majao/mambo.
+  *(2026-10-15)*
+
 ## Styling
 *(nothing yet)*
 
@@ -128,6 +140,7 @@ refines a point, the point gets updated, not duplicated.
   ask follows for feedback. *(2026-10-13)*
 
 ## Open questions
+- Where are the Dominican / traditional bachata nights in LA? *(2026-10-15)*
 - Which side is the hammerlock usually done on in my scene, and why? *(2026-10-11)*
 - What does my instructor mean by "lead with your head"? Posture, or something else?
   *(2026-10-07)*
