@@ -16,6 +16,10 @@ refines a point, the point gets updated, not duplicated.
 - **Trust is built through the connection.** The eyes-closed drill shows the follow
   can dance from the connection alone when the lead is clear. *(2026-10-13)*
 
+- **Commit to the lead.** A confident, simple lead feels better to a follow than a
+  hesitant fancy one; mixed signals leave them guessing. Going back to the basic is a
+  decision, not a failure. *(2026-10-18)*
+
 ## Body & technique
 - **Soft knees, quiet upper body.** Bent knees absorb each step so you don't stomp and
   your height stays level; the upper body stays tall and quiet (it travels with the

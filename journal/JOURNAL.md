@@ -16,6 +16,30 @@ Each entry has:
 
 ---
 
+## 2026-10-18 · "The men just won't lead"
+
+**Source:** something a follow said in Denver that still bothers me
+
+**What happened**
+- We were talking about lead and follow, and a woman burst out: "The men just won't
+  lead." Maybe true, but saying it out loud didn't feel right. We're learning too;
+  you can't expect us to get it right straight away. Leading comes with practice, and
+  some men don't lead because they're not used to the dance yet.
+
+**What I take from it**
+- **Leading is the harder role to start in:** choosing moves, timing, reading the
+  music, watching the floor. Hesitant beginner leads are normal.
+- **Her side:** a follow can't fix a dance on their own. A hesitant lead sends mixed
+  signals and leaves them guessing, which feels worse than a simple dance. So "won't
+  lead" probably meant **won't commit**, not "can't do fancy moves".
+- **What I can do now, as a beginner:** commit to simple moves; make every signal
+  clear (lead from the body, signal early); going back to the basic is a decision,
+  not a failure.
+- Her words were blunt, and they don't describe me. But commitment is the piece I can
+  act on right away.
+
+---
+
 ## 2026-10-18 · Still thinking about Wednesday's dance
 
 **Source:** reflection on the 2026-10-14 social
