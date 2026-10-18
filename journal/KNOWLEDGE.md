@@ -130,6 +130,11 @@ refines a point, the point gets updated, not duplicated.
   partner are together on the music, then add patterns. Lost mid-song? Go back to the
   basic and find the 1. *(2026-10-14)*
 - **When your head is busy choosing moves, timing goes first.** *(2026-10-14)*
+- **If a partner breaks off mid-dance,** stay graceful: don't make a scene, invite
+  them back, finish the song. *(2026-10-18)*
+- **Choosing partners:** go by how people actually behave, not first impressions.
+  Early in the night, ask people who look like they're enjoying themselves.
+  *(2026-10-18)*
 - Some LA classes have 6–8 leads per follow; ask early and make each dance count.
   *(2026-10-14)*
 

@@ -16,6 +16,34 @@ Each entry has:
 
 ---
 
+## 2026-10-18 · Still thinking about Wednesday's dance
+
+**Source:** reflection on the 2026-10-14 social
+
+**What happened**
+- The one dance I had at Wednesday's social, the one that was off beat, was with a
+  partner I'd danced with before who hadn't seemed friendly. My intuition said it
+  wasn't the right person to ask.
+- During the dance she broke off and danced on her own. I tried not to make it
+  awkward and invited her back. She said, "Why not try the thing we learned today?"
+  It just didn't feel right. I don't think I'll dance with her again.
+
+**What I take from it**
+- **Two things can be true.** Walking off mid-dance is unusual; the etiquette is to
+  finish the song. But the dance was off beat the whole time, so she may have been
+  frustrated with the dance, not with me. Her suggestion may have been a clumsy
+  attempt to help, since we'd both just been in that class.
+- **I handled it well:** no scene, and I invited her back.
+- **Choosing partners:** everyone at a social can choose who they dance with, in both
+  directions. Go by how someone has actually behaved, not by first impressions; plenty
+  of people look serious when they're concentrating. While I'm building confidence,
+  ask people I've seen enjoying themselves on the floor.
+- **The real fix is already in my plan:** find the beat with the basic in the first
+  16 counts. If the timing had locked in, the dance would probably have gone
+  differently.
+
+---
+
 ## 2026-10-15 · Footwork at home, sensual at the socials
 
 **Source:** my own reflection after the Wednesday social
