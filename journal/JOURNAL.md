@@ -16,6 +16,63 @@ Each entry has:
 
 ---
 
+## 2026-10-20 · Full weight transfer, and a private lesson on leading
+
+**Source:** Bachata 1, then the performance series at Level Up (Tuesday)
+
+### Bachata 1
+- Always good to revisit the basics and weight transfer.
+- **Biggest takeaway: weight transfer has to be "fully committed"** (my word). When
+  you make a move, make sure the weight has fully transferred, not split between your
+  feet. If it's split, the next move needs an extra adjustment to finish the
+  transfer first, because you can't move a foot that still carries part of your
+  weight.
+- Practised moderna (?) steps. Very different from the versions I learned at Meraki
+  in Louisville, but I got them. Different variations.
+
+### Performance series: just me and the instructor
+The other student didn't show, so the instructor offered to teach me more about
+leading.
+- **Lead even in choreography.** The follow knows what's next, but that doesn't mean
+  the lead gives no communication. Step, prep the follow, then make the move.
+- **Three connection points: the middle two fingers, the elbow, the shoulder.**
+  Crucial for communication between lead and follow.
+- **Shoulder-nudge left turn:** extend the left hand on 5; to send the follow into a
+  full turn to their left, let the hand go and use the shoulder, "boomerang style":
+  a slight bump on the follow's right shoulder from behind, nudge forward, then back.
+  That signals a turn, and they bounce into it. Then we meet again in the basic.
+  (The alternative is turning with hands connected, but that's not this move.)
+- **Checking tension:** when the connection or tension isn't what you expect, say
+  so: "Do you feel me? I don't feel you enough." Show it with the first knuckles of
+  the middle two fingers, pulling from the hand, not the arm: "pull me like this".
+  They adjust their tension.
+- **Hands move with your body.** When I moved left and right, my hands stayed in the
+  same place, left behind my torso. Moving the hands with the body sends a clear
+  message: we're doing a basic.
+- **A strong signal isn't rude or strong-arming.** Follows expect a clear, strong
+  signal; it's easier to follow. Biggest takeaway: **I have the freedom to apply
+  strength**, as long as it doesn't hurt them.
+
+### Why it works
+- **Full transfer** is the end of the hip-delay chain (foot, torso, hip): the
+  transfer is only done when the hip fully settles over the foot. Split weight means
+  a hidden extra step, which makes you late and makes the follow feel a stutter.
+- **Fingers, elbow, shoulder:** when all three are connected, the arm carries the
+  signal from the body to the follow; a loose point swallows it.
+- **Hands with the body** completes "torso first": the frame is torso **plus hands**,
+  moving as one unit.
+- **Strong vs shove:** firm, through the body, smooth = clear. Sudden, from the arm,
+  yanking = a shove. That fits "lead from the body, not the arms": strength is fine
+  when it comes from the body through a connected frame, scaled to each partner.
+
+**Try next**
+- Basic in the mirror: check that the hands travel with the torso.
+- Drill the shoulder-nudge left turn in shadow practice: prep, release on 5, nudge,
+  meet in the basic.
+- At every step, check that the weight is fully over one foot before the next.
+
+---
+
 ## 2026-10-18 · "The men just won't lead"
 
 **Source:** something a follow said in Denver that still bothers me

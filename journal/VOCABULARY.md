@@ -33,6 +33,7 @@ and **Dominican / traditional** (footwork and expression).
 |---|---|---|---|
 | Right turn | | | 💃 |
 | Left turn | | | 💃 |
+| Left turn, shoulder nudge (released) | Extend left hand on 5, let go, shoulder "boomerang" nudge on the follow's right shoulder (forward, then back); meet in the basic | Level Up performance series, 2026-10-20 | |
 | Cross body lead | | | 💃 |
 | Hammerlock | Follow's arm wrapped behind their back (which side? see open questions) | Class | |
 | | | | |

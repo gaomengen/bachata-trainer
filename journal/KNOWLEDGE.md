@@ -20,6 +20,18 @@ refines a point, the point gets updated, not duplicated.
   hesitant fancy one; mixed signals leave them guessing. Going back to the basic is a
   decision, not a failure. *(2026-10-18)*
 
+- **Lead even in choreography.** The follow may know what's next, but prep and signal
+  anyway; that keeps you together and builds the social habit. *(2026-10-20)*
+- **Three connection points: middle two fingers, elbow, shoulder.** Connected, the arm
+  carries the signal from the body; one loose point swallows it. *(2026-10-20)*
+- **Hands move with the body.** The frame is torso plus hands as one unit; hands left
+  behind make even the basic unclear. *(2026-10-20)*
+- **Strong is fine, a shove isn't.** Follows want a clear, firm signal: from the body,
+  through a connected frame, smooth. Never sudden or yanked from the arm; scale it to
+  the partner. *(2026-10-20)*
+- **Check tension out loud.** "Do you feel me?" Show the pull with the first knuckles
+  of the middle two fingers, from the hand, not the arm. *(2026-10-20)*
+
 ## Body & technique
 - **Soft knees, quiet upper body.** Bent knees absorb each step so you don't stomp and
   your height stays level; the upper body stays tall and quiet (it travels with the
@@ -38,6 +50,9 @@ refines a point, the point gets updated, not duplicated.
 - **Torso-first keeps you upright.** Leading with the hip leaves the upper body behind
   and bends you into a "C"; leading with torso and foot ends with shoulders, hip and
   foot stacked. *(2026-10-08)*
+- **Fully commit the weight transfer.** The weight goes completely onto one foot, never
+  split. Split weight forces an extra adjustment before the next move, which makes
+  you late. *(2026-10-20)*
 - **The hip comes from the knees.** When the weighted leg straightens a little and the
   other softens, the hip tilts by itself. Don't push it. *(2026-10-07)*
 - **Head level and over the body**, not leading forward. *(2026-10-07)*
