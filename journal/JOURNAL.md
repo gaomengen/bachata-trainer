@@ -27,7 +27,7 @@ Each entry has:
   feet. If it's split, the next move needs an extra adjustment to finish the
   transfer first, because you can't move a foot that still carries part of your
   weight.
-- Practised moderna (?) steps. Very different from the versions I learned at Meraki
+- Practised **Madrid steps**. Very different from the versions I learned at Meraki
   in Louisville, but I got them. Different variations.
 
 ### Performance series: just me and the instructor

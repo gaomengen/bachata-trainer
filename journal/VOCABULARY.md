@@ -26,6 +26,7 @@ and **Dominican / traditional** (footwork and expression).
 | Box step | Side basic left + forward & back basic | Class | 💃 |
 | Box: diagonal entry | Count 1 steps diagonally forward-left, frame leads; then the regular box | Class, 2026-10-07 | |
 | Box: all diagonal | Whole box turned 45° | Class, 2026-10-07 | |
+| Madrid steps | *(cue to add)* | Bachata 1, Level Up, 2026-10-20 (a different version at Meraki, Louisville) | |
 
 ## Sensual / partner patterns
 
