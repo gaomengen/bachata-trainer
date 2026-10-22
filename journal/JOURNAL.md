@@ -16,6 +16,24 @@ Each entry has:
 
 ---
 
+## 2026-10-21 · The path to free dancing
+
+**Source:** practising with my class recordings
+
+**What I realized**
+- The more I practise the videos I recorded, the more I see the path to free dancing.
+  I have to muscle-memorise the moves first, absorb them, and let them become part of
+  me, just like the right and left turns in the basic.
+
+**Why it works**
+- Free dancing isn't inventing moves on the spot. It's recombining moves you no
+  longer have to think about. The right and left turns survived Wednesday's social
+  because they're already part of me.
+- **Test for "absorbed":** can I do the move while my attention is somewhere else
+  (the music, the floor, my partner)? If yes, it's ready for free dancing.
+
+---
+
 ## 2026-10-20 · Full weight transfer, and a private lesson on leading
 
 **Source:** Bachata 1, then the performance series at Level Up (Tuesday)

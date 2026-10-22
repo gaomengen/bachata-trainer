@@ -9,7 +9,8 @@ If I can't do it without the recording, it goes back to drilling.
 
 **Status levels**
 - 🎥 **With video:** I can do it while watching the recording
-- 🧠 **From memory:** I can do it from the name alone, solo
+- 🧠 **From memory:** I can do it from the name alone, solo, even with my attention
+  on the music (the "absorbed" test)
 - 💃 **Social-ready:** I've led it at a social, on beat, with a stranger
 
 Moves are grouped by style: **sensual** (partner patterns, what the LA socials dance)

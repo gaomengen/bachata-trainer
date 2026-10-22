@@ -97,6 +97,9 @@ refines a point, the point gets updated, not duplicated.
 - **Class is recognition; a social is recall.** Under pressure you only have what's
   automatic. Drill until a pattern needs no recording, like vocabulary in a language:
   you don't talk with a dictionary. *(2026-10-14)*
+- **Free dancing = recombining absorbed moves.** Muscle-memorise each move until it's
+  part of me, like the basic turns. Test: can I do it while my attention is on the
+  music, the floor or my partner? *(2026-10-21)*
 - **Keep a vocabulary list:** every pattern named, with a one-line cue; practise from
   the name, not the video. *(2026-10-14)*
 - **Full-song shadow dancing** with an imaginary partner, returning to the basic
