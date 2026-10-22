@@ -29,7 +29,29 @@ social. If I can do that, tonight is a win.
    the next partner.
 5. Ask someone who looks like they're having fun; stay long enough for a few tries.
 
-**How it went:** *(to fill in after the social)*
+**How it went: a win** *(written 2026-10-22)*
+- **Classes:** good. I could follow most of it and I'm learning faster than the night
+  before. When a pattern uses pieces I've done before, I recognise them and rebuild it
+  from my toolbox instead of learning it from scratch.
+- **Social: 3 dances.**
+  1. The first wasn't great, but I still enjoyed it. I tried the move I'd been
+     practising and couldn't pull it off.
+  2. I went to the bathroom, rewatched the video, and pulled it off with my second
+     partner, a new friend from Level Up who has just started. I made her happy with
+     different patterns.
+  3. Also did the hammerlock and the Madrid walk.
+- Interesting: you think you've got a pattern memorised, but on the dance floor you
+  still forget.
+- I feel like I'm making progress.
+
+**Why it worked**
+- **Chunking:** new patterns become a few pieces I already own, in a new order. That's
+  why learning speeds up as the vocabulary grows.
+- **Forgot, rewatched, succeeded:** the move is learned but not yet absorbed.
+  Remembering under pressure is the last stage. A few more shadow-practice rounds and I
+  won't need the refresh.
+- **Leading a new dancer well** means reading what they can do and giving them
+  patterns that feel good: the leader's responsibility, in practice.
 
 ---
 

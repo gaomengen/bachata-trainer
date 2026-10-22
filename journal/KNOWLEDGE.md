@@ -16,6 +16,8 @@ refines a point, the point gets updated, not duplicated.
 - **Trust is built through the connection.** The eyes-closed drill shows the follow
   can dance from the connection alone when the lead is clear. *(2026-10-13)*
 
+- **Leading a new dancer:** read what they can do and give them patterns that feel
+  good. *(2026-10-22)*
 - **Commit to the lead.** A confident, simple lead feels better to a follow than a
   hesitant fancy one; mixed signals leave them guessing. Going back to the basic is a
   decision, not a failure. *(2026-10-18)*
@@ -100,6 +102,11 @@ refines a point, the point gets updated, not duplicated.
 - **Free dancing = recombining absorbed moves.** Muscle-memorise each move until it's
   part of me, like the basic turns. Test: can I do it while my attention is on the
   music, the floor or my partner? *(2026-10-21)*
+- **Chunking:** as the vocabulary grows, new patterns are recognised as known pieces in
+  a new order, so learning speeds up. *(2026-10-22)*
+- **Learned isn't absorbed.** A move can work in practice and still vanish on the
+  floor; remembering under pressure is the last stage. A quick rewatch between dances
+  helps in the meantime. *(2026-10-22)*
 - **Keep a vocabulary list:** every pattern named, with a one-line cue; practise from
   the name, not the video. *(2026-10-14)*
 - **Full-song shadow dancing** with an imaginary partner, returning to the basic

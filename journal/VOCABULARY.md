@@ -27,7 +27,7 @@ and **Dominican / traditional** (footwork and expression).
 | Box step | Side basic left + forward & back basic | Class | 💃 |
 | Box: diagonal entry | Count 1 steps diagonally forward-left, frame leads; then the regular box | Class, 2026-10-07 | |
 | Box: all diagonal | Whole box turned 45° | Class, 2026-10-07 | |
-| Madrid steps | *(cue to add)* | Bachata 1, Level Up, 2026-10-20 (a different version at Meraki, Louisville) | |
+| Madrid steps / Madrid walk | *(cue to add)* | Bachata 1, Level Up, 2026-10-20 (a different version at Meraki, Louisville) | 💃 |
 
 ## Sensual / partner patterns
 
@@ -37,7 +37,7 @@ and **Dominican / traditional** (footwork and expression).
 | Left turn | | | 💃 |
 | Left turn, shoulder nudge (released) | Extend left hand on 5, let go, shoulder "boomerang" nudge on the follow's right shoulder (forward, then back); meet in the basic | Level Up performance series, 2026-10-20 | |
 | Cross body lead | | | 💃 |
-| Hammerlock | Follow's arm wrapped behind their back (which side? see open questions) | Class | |
+| Hammerlock | Follow's arm wrapped behind their back (which side? see open questions) | Class | 💃 |
 | | | | |
 
 ## Dominican / traditional footwork
