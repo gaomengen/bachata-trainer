@@ -16,6 +16,23 @@ Each entry has:
 
 ---
 
+## 2026-10-21 · Goal for tonight's social
+
+**Goal:** try out the move I've memorised a couple of times, and carry it out at the
+social. If I can do that, tonight is a win.
+
+**Checklist**
+1. Basic first: 8–16 counts until we're together on the beat.
+2. Prep, then commit: hands travel with the body, firm lead through the frame.
+3. Return to the basic afterwards.
+4. If it doesn't work, go back to the basic and try again later in the song or with
+   the next partner.
+5. Ask someone who looks like they're having fun; stay long enough for a few tries.
+
+**How it went:** *(to fill in after the social)*
+
+---
+
 ## 2026-10-21 · The path to free dancing
 
 **Source:** practising with my class recordings
