@@ -16,6 +16,34 @@ Each entry has:
 
 ---
 
+## 2026-10-22 · Learning shines from un-mirrored videos
+
+**Source:** a TikTok video of a bachata shine (impressive footwork, good music)
+
+**The problem**
+- The video isn't mirrored: I face the instructor face to face. I'm not used to
+  learning that way. I end up using the foot I usually don't use, relearning the
+  pattern on the opposite foot, so I learn slower.
+
+**Why it happens**
+- The instructor steps with their **left** foot, which appears on the **right** side
+  of my screen. Copying it like a mirror, I step with my **right**. So I'm learning
+  the shine on the side the instructor isn't using.
+
+**The fix: flip the video horizontally**, then copy with the same foot.
+- iPhone: save it, then Photos → Edit → crop tool → flip.
+- CapCut: Mirror (and slow it down there).
+
+**How to learn a shine**
+1. Slow it to 0.5×, learn it in 8-counts.
+2. Loop one 8-count until it's from memory, then add the next.
+3. Count out loud with the "and"s; shines are full of syncopation.
+4. Film myself and compare with the flipped video.
+5. Once absorbed, learn the mirrored side too (solo work on both sides keeps me
+   balanced).
+
+---
+
 ## 2026-10-21 · Goal for tonight's social
 
 **Goal:** try out the move I've memorised a couple of times, and carry it out at the

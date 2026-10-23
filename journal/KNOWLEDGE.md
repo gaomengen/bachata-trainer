@@ -107,6 +107,9 @@ refines a point, the point gets updated, not duplicated.
 - **Learned isn't absorbed.** A move can work in practice and still vanish on the
   floor; remembering under pressure is the last stage. A quick rewatch between dances
   helps in the meantime. *(2026-10-22)*
+- **Flip un-mirrored videos.** Copying a face-to-face instructor puts you on the
+  opposite foot. Flip the video horizontally, slow it to 0.5×, loop one 8-count at a
+  time. *(2026-10-22)*
 - **Keep a vocabulary list:** every pattern named, with a one-line cue; practise from
   the name, not the video. *(2026-10-14)*
 - **Full-song shadow dancing** with an imaginary partner, returning to the basic
