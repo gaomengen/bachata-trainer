@@ -151,6 +151,13 @@ refines a point, the point gets updated, not duplicated.
   doesn't replace partner patterns at a sensual social. *(2026-10-15)*
 - On pop remixes, listen for breaks, drops and builds rather than majao/mambo.
   *(2026-10-15)*
+- **Shine = a short sequence of solo footwork** (term from salsa: partners let go and
+  each "shines"). *(2026-10-22)*
+- **Shines at socials:** at Dominican nights, all the time (often in open hold, both
+  partners doing footwork). At sensual socials, in small doses: 4–8 counts on a
+  break or an energetic section, then reconnect; or pieces of a shine as texture
+  inside the basic. Keep it short, invite the partner in, always come back to the
+  connection; keep it very short with a beginner. *(2026-10-22)*
 
 ## Styling
 *(nothing yet)*
