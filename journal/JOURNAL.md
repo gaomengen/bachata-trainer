@@ -42,6 +42,8 @@ Each entry has:
 5. Once absorbed, learn the mirrored side too (solo work on both sides keeps me
    balanced).
 
+**Result:** downloaded it and mirrored it. So much easier to learn now.
+
 ---
 
 ## 2026-10-21 · Goal for tonight's social
