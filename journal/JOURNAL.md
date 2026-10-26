@@ -16,6 +16,24 @@ Each entry has:
 
 ---
 
+## 2026-10-26 · Smile hips and counter hips
+
+**Source:** answer to my open question about hip styles
+
+**What I learned**
+- **Majao hips are the "smile hips."**
+- **Counter hip** is when the body moves opposite to itself: the hip going the other
+  way.
+
+**Why it works**
+- Smile hips: the hip traces a smile (a U) as the weight transfers, dipping through
+  the middle and rising on the far side. Smooth and round, not a sharp pop, which
+  fits the rolling, busier feel of the majao.
+- Counter hip: to confirm whether the hip goes opposite the step (step left, hip
+  pushes right) or opposite the upper body (a twist).
+
+---
+
 ## 2026-10-25 · Mapping my first song: "Se Te Nota" (Joe Veras)
 
 **Source:** listening, plus the lyrics

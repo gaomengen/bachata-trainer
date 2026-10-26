@@ -53,6 +53,8 @@ and **Dominican / traditional** (footwork and expression).
 | Double step ("3 & 4") | Two quick steps in place of the tap | Syncopated hit before the 4 | |
 | "Dun dun toe" | Vary the weight of the steps: heavy, heavy, light tap | Accents in the music | |
 | Hold | Freeze for a beat or more | Breaks and stops | |
+| Majao hips ("smile hips") | Hip traces a U as the weight transfers: dip, then rise | Majao sections | |
+| Counter hip | Hip goes opposite to the body (details to confirm) | | |
 
 ---
 
