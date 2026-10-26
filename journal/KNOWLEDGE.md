@@ -143,9 +143,17 @@ refines a point, the point gets updated, not duplicated.
 - **The shout-out clue:** the singer calling out over an instrumental break ("óyela",
   their own name) very often marks the mambo, a good moment for a shine.
   *(2026-10-25)*
-- **Song maps:** "Se Te Nota" (Joe Veras): chorus = majao, "Óyela" break = mambo,
-  "Tu piel morena" verse = derecho (from the lyrics; confirm by ear).
-  *(2026-10-25)*
+- **Example: "Se Te Nota" (Joe Veras)**, the traditional song shape in a real song
+  *(2026-10-25; mapped from the lyrics, to confirm by ear)*:
+
+  | Section | Starts with | Rhythm | What to listen for |
+  |---|---|---|---|
+  | Verse (before the chorus) | | **Derecho** | Steady, even bongo under the story |
+  | Chorus | "Se te nota que tú me estás amando…" | **Majao** | Bongo gets busier and syncopated; the song lifts, same tempo |
+  | Hook | "Se te nota, se te nota… mamá" | **Majao** | Repetition building up |
+  | Break | ♪ "Joe Veras… Óyela, óyela…" | **Mambo** | Instrumental, cowbell, güira driving, singer's shout-out |
+  | Verse | "Tu piel morena, mamá…" | **Derecho** | Calms back down |
+  | Chorus + hook ×2 | "Se te nota que tú me estás amando…" | **Majao → mambo** | The cycle repeats to the end |
 - **Bachata comes in phrases of eight counts, usually four eights at a time.** Fills
   and builds tend to come at the end of a phrase, so changes can be predicted even
   in an unfamiliar song. *(2026-10-10)*
