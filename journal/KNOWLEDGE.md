@@ -184,6 +184,10 @@ refines a point, the point gets updated, not duplicated.
   ask follows for feedback. *(2026-10-13)*
 
 ## Open questions
+- **Majao hips vs double hips:** what exactly is the difference? Guess: double hips =
+  two hip movements where there'd normally be one (e.g. on "4 &"); majao hips = hips
+  riding the busier, syncopated feel of the majao section. Confirm with an instructor
+  or the video. *(2026-10-25)*
 - Where are the Dominican / traditional bachata nights in LA? *(2026-10-15)*
 - Which side is the hammerlock usually done on in my scene, and why? *(2026-10-11)*
 - What does my instructor mean by "lead with your head"? Posture, or something else?
