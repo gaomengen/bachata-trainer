@@ -133,6 +133,15 @@ refines a point, the point gets updated, not duplicated.
 - **Texture follows musical accents.** Syncopation is the most common trigger; also
   breaks and stops (hold), the mambo section (bigger, busier), and strong hits on the
   beat. *(2026-10-10)*
+- **Traditional song shape:** verse in derecho, chorus lifts into majao, then an
+  instrumental break in mambo (cowbell, güira pushing). Often the cycle repeats.
+  *(2026-10-25)*
+- **The shout-out clue:** the singer calling out over an instrumental break ("óyela",
+  their own name) very often marks the mambo, a good moment for a shine.
+  *(2026-10-25)*
+- **Song maps:** "Se Te Nota" (Joe Veras): chorus = majao, "Óyela" break = mambo,
+  "Tu piel morena" verse = derecho (from the lyrics; confirm by ear).
+  *(2026-10-25)*
 - **Bachata comes in phrases of eight counts, usually four eights at a time.** Fills
   and builds tend to come at the end of a phrase, so changes can be predicted even
   in an unfamiliar song. *(2026-10-10)*

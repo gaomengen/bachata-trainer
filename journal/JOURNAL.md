@@ -16,6 +16,35 @@ Each entry has:
 
 ---
 
+## 2026-10-25 · Mapping my first song: "Se Te Nota" (Joe Veras)
+
+**Source:** listening, plus the lyrics
+
+**What I thought**
+- The chorus part of the lyrics is where the majao is.
+
+**The map (from the lyrics; to confirm by ear)**
+| Section | Starts with | Likely rhythm |
+|---|---|---|
+| (First verse, probably before the chorus) | | Derecho |
+| Chorus | "Se te nota que tú me estás amando…" | **Majao**: the song lifts |
+| Hook | "Se te nota, se te nota… mamá" | **Majao**, building |
+| Break | ♪ "Joe Veras… Óyela, óyela…" | **Mambo**: instrumental + shout-out; listen for the cowbell |
+| Verse | "Tu piel morena, mamá…" | **Derecho**: calms down for the story |
+| Chorus + hook ×2 | "Se te nota que tú me estás amando…" | **Majao** again, probably ending in mambo |
+
+**Checks when listening**
+1. At "Se te nota que tú me estás amando", does the bongo get busier and more
+   syncopated than in the verse? Then it's majao.
+2. At "Óyela, óyela", does a cowbell come in with the güira pushing hard? Then it's
+   mambo.
+
+**Clue for the dance floor:** in traditional bachata, the singer's shout-out over an
+instrumental break (their own name, "óyela", "¡mamá!") very often marks the mambo.
+It's a good moment for a shine.
+
+---
+
 ## 2026-10-22 · Learning shines from un-mirrored videos
 
 **Source:** a TikTok video of a bachata shine (impressive footwork, good music)
