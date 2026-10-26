@@ -133,9 +133,13 @@ refines a point, the point gets updated, not duplicated.
 - **Texture follows musical accents.** Syncopation is the most common trigger; also
   breaks and stops (hold), the mambo section (bigger, busier), and strong hits on the
   beat. *(2026-10-10)*
-- **Traditional song shape:** verse in derecho, chorus lifts into majao, then an
-  instrumental break in mambo (cowbell, güira pushing). Often the cycle repeats.
-  *(2026-10-25)*
+- **Traditional song shape:** verse in **derecho** (the steady base groove), chorus
+  lifts into **majao** (busier and building), then an instrumental break in **mambo**
+  (requinto riffs, bongo player on the cowbell, güira driving, often a shout-out).
+  Often the cycle repeats. *(2026-10-25)*
+- **Majao isn't faster, it's busier.** The tempo stays the same all song; the bongo
+  plays more notes and more syncopation, so it *feels* bigger. Feet keep the same
+  speed. *(2026-10-25)*
 - **The shout-out clue:** the singer calling out over an instrumental break ("óyela",
   their own name) very often marks the mambo, a good moment for a shine.
   *(2026-10-25)*
